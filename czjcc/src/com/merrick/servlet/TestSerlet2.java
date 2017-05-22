@@ -25,7 +25,7 @@ public class TestSerlet2 extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("TestSerlet2 init");
-		//仅注解配置
+		//仅注解配置,OK,自动执行
 	}
 
 }

@@ -26,7 +26,7 @@ public class TestSerlet1 extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 
 		System.out.println("TestSerlet1 init");
-		//在web.xml中配置
+		//在web.xml中配置,OK,自动执行
 		
 	}
 
