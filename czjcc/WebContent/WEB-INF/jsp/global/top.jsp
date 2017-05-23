@@ -12,6 +12,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>TOP</title>
 <link type="text/css" rel="stylesheet" href="css/global.css">
+<style type="text/css">
+
+</style>
 <script type="text/javascript">
 
 	window.onload = function(){
@@ -29,12 +32,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>			
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
+			<td ><div style="width:1280px;height:135px;;background-image: url('img/changzhou_overview1_m2.jpg'); background-repeat: no-repeat;background-position: left;"></div></td>
 		</tr>
+
 		<tr>
-			<td style=" 	">				
+			<td style="">				
 					<ul  style="" class="toppage" >
-						<li style=""><a href="">用户信息</a></li>
+						<li style=""><a href="user/edit">用户信息</a></li>
 						<li>|</li>
 						<li><a href="">活动登记</a></li>
 						<li>|</li>

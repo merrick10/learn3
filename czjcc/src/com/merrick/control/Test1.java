@@ -2,6 +2,9 @@ package com.merrick.control;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.PageContext;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,4 +38,7 @@ public class Test1 extends ParentControl{
 	public String f3(){
 		return "global/top";		
 	}
+	
+
+	
 }

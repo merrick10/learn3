@@ -21,9 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	//	var x = document.getElementsByTagName('table').item(0).offsetTop ;
 	//	alert(x);
-		var y = document.getElementById('mainDiv').offsetTop ;
+	//	var y = document.getElementById('mainDiv').offsetTop ;
 	//	alert(y);
-		document.getElementById('mainDiv').offsetTop = 0;
+	//	document.getElementById('mainDiv').offsetTop = 0;
 	}
 </script>
 </head>

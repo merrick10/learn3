@@ -70,3 +70,50 @@ ul.toppage li{
 	text-align: center;
 }
 
+table.edit{
+	width:800px;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+
+}
+table.edit tr td{
+	line-height:30px;
+	padding: 2px;	
+	
+}
+
+p.nowloaction{
+	color: #666666;
+	font-size: 12px;
+	margin: auto;
+	width: 800px;
+	margin-top: 5px;	
+}
+p.nowloaction:BEFORE {
+	content: '\21E8您当前位置：';
+}
+
+input[type=text].edittxt{
+	width:300px;
+	height: 24px;
+}
+
+input[type=button].operatebtn{
+	text-decoration: none;
+	background-color: #666699;		
+	font-size: 12px;
+	width: 100px!important;
+	height: 25px!important;
+	color: white;
+	border: 0px!important;
+	border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	cursor: pointer;
+}
+input[type=button].operatebtn:HOVER{
+	background-color:#0099FF;
+	color:yellow;
+}
