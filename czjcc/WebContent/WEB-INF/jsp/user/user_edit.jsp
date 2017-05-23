@@ -10,8 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>test</title>
+<title>用户-编辑</title>
 <link type="text/css" rel="stylesheet" href="css/global.css">
+
 <script type="text/javascript">
 
 	window.onload = function(){
@@ -21,10 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body>
-<h1 style="color: pink;">Runnging well Thanks for Testing</h1>
+<h1 style="color: blue;" contextmenu="" draggable="true">用户-编辑</h1>
 
 <br/>
-<c:out value="${str_datetime}"></c:out>
+<c:out value=""></c:out>
 <hr/>
 
 </body>

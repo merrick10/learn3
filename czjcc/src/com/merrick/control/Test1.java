@@ -26,4 +26,13 @@ public class Test1 extends ParentControl{
 	}
 	
 
+	@RequestMapping(path="/footer",method=RequestMethod.GET)
+	public String f2(){
+		return "global/bottom";		
+	}
+	
+	@RequestMapping(path="/top",method=RequestMethod.GET)
+	public String f3(){
+		return "global/top";		
+	}
 }

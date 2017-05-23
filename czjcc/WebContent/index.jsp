@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>首页</title>
-
+<link type="text/css" rel="stylesheet" href="css/global.css">
 <script type="text/javascript">
 
 	window.onload = function(){
@@ -26,11 +26,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body>
-<h1>Hello</h1>
+<h1 draggable="true">Hello</h1>
 
 <a href="img/cat1.png">test_image</a>
 <hr/>
 
-<a href="test1/f1">F1</a>
+<a href="test1/f1">F1</a><hr/>
+<a href="test1/footer">Footer</a><hr/>
+<a href="test1/top">TOP</a>
 </body>
 </html>
