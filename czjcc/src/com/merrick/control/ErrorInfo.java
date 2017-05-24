@@ -31,7 +31,7 @@ public class ErrorInfo extends ParentControl{
 	@RequestMapping(value="/uncaughtException" ,method=RequestMethod.GET)
 	public String errorpage(Model mdl,Exception e){
 		
-		mdl.addAttribute("errinfo",  e.toString());
+		mdl.addAttribute("errinfo",  e.toString());//看似不能完全捕获
 		
 		return "error/error";		
 	}
