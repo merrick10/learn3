@@ -29,11 +29,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <form action="user/" method="POST">
 <table class="edit" border="0"  style="margin:auto;" cellpadding="0" cellspacing="0" >
 	<caption><h2 style="color: blue;" contextmenu="" draggable="true">用户-列表</h2></caption>
+	<thead >	
 	<tr>
+		<td style="width:15%;">NUMBER</td>
 		<td style="width: 20%;font-weight: bold;text-align: center;">ID</td>
-		<td style="width: 80%;font-weight: bold;text-align: center;">名字</td>
+		<td style="width: 65%;font-weight: bold;text-align: center;">名字</td>
+	</tr>
+	</thead>
+<c:forEach items="${user}" var="u" varStatus="num">
+<!-- 	<tr>	 -->
+<%-- 		<td style="width:15%;">${num.index+1}</td> --%>
+<%-- 		<td style="width:20%;">${u[0]}</td> --%>
+<%-- 		<td style="width:65%;">${u[1]}</td> --%>
+<!-- 	</tr> -->
+	
+		<tr>	
+		<td style="width:15%;">${num.index+1}</td>
+		<td style="width:20%;">${u.id}</td>
+		<td style="width:65%;">${u.name}</td>
 	</tr>
 
+</c:forEach>	
+
+	
+	
+	
 </table>
 
 

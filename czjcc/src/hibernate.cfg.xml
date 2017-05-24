@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.c3p0.acquireRetryAttempts">30</property>
+        <property name="hibernate.c3p0.acquire_increment">5</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.max_size">100</property>
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <property name="hibernate.cache.use_query_cache">false</property>
+        <property name="hibernate.connection.autocommit">false</property>
+        <property name="hibernate.connection.characterEncoding">UTF-8</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.elideSetAutoCommits">false</property>
+        <property name="hibernate.connection.password">okisoft</property>
+        
+        <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jpcorps</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.zeroDateTimeBehavior">convertToNull</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+<!-- 		<property name="hibernate.dialect">com.czjpcoms.db.ExMysqlDialect</property> -->
+        <property name="hibernate.generate_statistics">true</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.show_sql">false</property>
+
+        <mapping resource="com/merrick/entity/Siteuser.hbm.xml" />
+
+    </session-factory>
+</hibernate-configuration>
