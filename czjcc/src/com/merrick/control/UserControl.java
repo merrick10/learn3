@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.merrick.db.BaseHibernateImpl;
 import com.merrick.db.SiteUserDAOImpl;
@@ -61,7 +62,7 @@ public class UserControl {
 	}
 	
 	@RequestMapping(path="/listall",method={RequestMethod.GET,RequestMethod.POST})
-	public String listall(Model mdl){
+	public ModelAndView listall(Model mdl){
 		
 
 		log.info("user/list");		//
@@ -69,7 +70,12 @@ public class UserControl {
 //		mdl.addAttribute("user", bhi.getListBySQL("select * from siteuser"));//OK
 		mdl.addAttribute("user", bhi.getObjectList("select * from siteuser", Siteuser.class));//OK//当然,结果必须是已声明映射的对象,查询所有列
 		
-		return "user/user_list";
+//		return "user/user_list";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("userpage");	
+		
+		return mav;
+		
 	}
 	
 	

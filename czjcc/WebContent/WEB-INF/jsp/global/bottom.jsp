@@ -18,26 +18,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 	window.onload = function(){
-		
-	//	var x = document.getElementsByTagName('table').item(0).offsetTop ;
-	//	alert(x);
-	//	var y = document.getElementById('mainDiv').offsetTop ;
-	//	alert(y);
-	//	document.getElementById('mainDiv').offsetTop = 0;
+
 	}
 </script>
 </head>
 <body style="width: 100%;height: 100%;">
 <div id="mainDiv" >
-	<table border="0" class="footer" style="margin:auto;" >
+	<table border="0" class="footer" style="margin:auto;"  cellpadding="0" cellspacing="0">
 		<tr style="">
-			<td style="">
+			<td style="line-height: 25px;">
 				Copyright © 1999-2017, Merrick, All Rights Reserved
 			</td>			
 		</tr>
 
 		<tr>
-			<td style=" 	">				
+			<td style="line-height: 25px;">				
 					<ul  style="" class="ulfooter" >
 						<li style="">联系方式</li>
 						<li>|</li>

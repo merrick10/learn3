@@ -20,12 +20,13 @@
 table.footer{
 	width: 100%;
 	height: 100%;	
-	border: 1px solid #CCCCCC;  
+	border: 1px solid #CCCCCC;	
 }
 
 table.footer td{
 	font-size: 12px;	
-	width:1280px; height:28px; text-align: center; vertical-align: middle;
+	text-align: center; 
+	vertical-align: middle;
 }
 
 ul.ulfooter{
@@ -50,8 +51,9 @@ table.toppage{
 }
 
 table.toppage td{
-	font-size: 12px;	
-	width:1280px; height:28px; text-align: center; vertical-align: middle;
+	font-size: 12px;
+	text-align: center; 
+	vertical-align: middle;
 }
 
 ul.toppage{

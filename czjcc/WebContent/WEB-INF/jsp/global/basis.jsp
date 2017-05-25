@@ -6,40 +6,46 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html>
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>首页</title>
+<title>CZJCC</title>
 <link type="text/css" rel="stylesheet" href="css/global.css">
+<style type="text/css">
+
+</style>
 <script type="text/javascript">
 
 	window.onload = function(){
-		
-		
-		//alert('welcome!');
-		var tt2 = document.createElement('h2');
-		tt2.innerHTML = new Date();
-		document.body.appendChild(tt2);
-		
-		//window.location = 
-		
+
 	}
 </script>
-
 </head>
-<body>
+<body style="width: 100%;height: 100%;">
+<div id="mainDiv" >
+	<table border="0" class="" style="margin:auto;" cellpadding="0" cellspacing="0">
+		<tr style="">
+			<td style="line-height: 185px;">
+				<tiles:insertAttribute name="toper"></tiles:insertAttribute>
+			</td>			
+		</tr>
+
+		<tr>
+			<td style="height: auto;min-height: 500px;padding-top: 0;padding-left: 0; text-align: left;" valign="top">				
+				<tiles:insertAttribute name="body" />
+			</td>
+		</tr>
+		<tr>
+			<td>				
+				<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+			</td>
+		</tr>		
+	</table>
+
+</div>
 
 
-
-<h1 draggable="true">Hello</h1>
-
-<a href="img/cat1.png">test_image</a>
-<hr/>
-
-<a href="test1/f1">F1</a><hr/>
-<a href="test1/footer">Footer</a><hr/>
-<a href="test1/top">TOP</a>
 </body>
 </html>

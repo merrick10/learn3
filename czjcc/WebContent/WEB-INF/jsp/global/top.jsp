@@ -25,9 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div id="mainDiv">
-	<table border="0" class="toppage" style="margin:auto;" >
+	<table border="0" class="toppage" style="margin:auto;" cellpadding="0" cellspacing="0" >
 		<tr style="">
-			<td style="">
+			<td style="line-height: 25px;">
 				<h1 style="color: pink;" >TOP Page</h1>
 			</td>			
 		</tr>
@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 
 		<tr>
-			<td style="">				
+			<td style="line-height: 25px;">				
 					<ul  style="" class="toppage" >
 						<li style=""><a href="user/edit">用户信息</a></li>
 						<li>|</li>

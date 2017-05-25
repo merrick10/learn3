@@ -42,5 +42,21 @@
 	<bean id="mybasedao" class="com.merrick.db.BaseHibernateImpl">
 		<property name="sessionFactory" ref="mySessionFactory"/>
 	</bean>
+	
+	
+	<bean id="tilesconfig"  class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/layout/tiles.xml</value>				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tilesviewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="order" value="1" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	
+	
       
 </beans>
