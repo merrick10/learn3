@@ -1,6 +1,11 @@
 package com.merrick.control;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +30,10 @@ public class UserControl {
 	private BaseHibernateImpl bhi;
 	
 	@RequestMapping(path="/edit",method={RequestMethod.GET})
-	public String edit(Model mdl){		
+	public String edit(Model mdl,HttpServletRequest request, HttpServletResponse response){		
 
+
+		
 		log.info("user/edit");		//
 		return "user/user_edit";
 	}

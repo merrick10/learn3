@@ -3,15 +3,15 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-	<definition name="base" template="/WEB-INF/jsp/global/basis.jsp">
-	
+	<definition name="base" template="/WEB-INF/jsp/global/basis.jsp">		
+		<put-attribute name="thetitle" value="FIRST PAGE" type="string"></put-attribute>
 		<put-attribute name="toper" value="/WEB-INF/jsp/global/top.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/jsp/global/bottom.jsp"></put-attribute>
-	
+		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="homepage" extends="base">
-		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp"></put-attribute>
+	<definition name="homepage" extends="base">		
+		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp"></put-attribute>	
 	</definition>
 	
 	<definition name="userpage" extends="base">

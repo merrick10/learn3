@@ -11,16 +11,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>CZJCC</title>
+<title><tiles:getAsString name="thetitle"></tiles:getAsString></title>   
 <link type="text/css" rel="stylesheet" href="css/global.css">
 <style type="text/css">
 
 </style>
 <script type="text/javascript">
 
-	window.onload = function(){
-
-	}
 </script>
 </head>
 <body style="width: 100%;height: 100%;">
@@ -33,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 
 		<tr>
-			<td style="height: auto;min-height: 500px;padding-top: 0;padding-left: 0; text-align: left;" valign="top">				
+			<td style="height: auto;min-height: 490px; height:500px;padding-top: 0;padding-left: 0; text-align: left;" valign="top">				
 				<tiles:insertAttribute name="body" />
 			</td>
 		</tr>

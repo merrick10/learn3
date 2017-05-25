@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body>
+
 <div id="mainDiv">
 <BR/>
 <p class="nowloaction">用户管理 &#187 列表</p>
@@ -31,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<caption><h2 style="color: blue;" contextmenu="" draggable="true">用户-列表</h2></caption>
 	<thead >	
 	<tr>
-		<td style="width:15%;">NUMBER</td>
+		<td style="width:15%;font-weight: bold;text-align: center;">NUMBER</td>
 		<td style="width: 20%;font-weight: bold;text-align: center;">ID</td>
 		<td style="width: 65%;font-weight: bold;text-align: center;">名字</td>
 	</tr>
@@ -44,9 +45,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 	</tr> -->
 	
 		<tr>	
-		<td style="width:15%;">${num.index+1}</td>
-		<td style="width:20%;">${u.id}</td>
-		<td style="width:65%;">${u.name}</td>
+		<td style="width:15%;text-align: right;">${num.index+1}</td>
+		<td style="width:20%;text-align: center;">${u.id}</td>
+		<td style="width:65%;text-align: center;">${u.name}</td>
 	</tr>
 
 </c:forEach>	
