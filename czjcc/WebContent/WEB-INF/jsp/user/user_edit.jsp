@@ -17,10 +17,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </head>
 <body>
-<tiles:insertDefinition name="base">
-	<tiles:putAttribute name="body">
+<%-- <tiles:insertDefinition name="base"> --%>
+<%-- 	<tiles:putAttribute name="body"> --%>
 <!-- 	此种情况需注意body的样式和页面的title -->
-
+	
+<%-- 	</tiles:putAttribute> --%>
+<%-- </tiles:insertDefinition> --%>
 		<div id="mainDiv">
 		<BR/>
 		<p class="nowloaction">用户管理 &#187 编辑</p>
@@ -77,8 +79,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 </script>
 
-	
-	</tiles:putAttribute>
-</tiles:insertDefinition>
+
 </body>
 </html>

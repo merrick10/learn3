@@ -13,13 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>用户-列表</title>
 <link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
 
-<script type="text/javascript">
 
-	window.onload = function(){
-		
-		
-	}
-</script>
 </head>
 <body>
 
@@ -66,5 +60,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <br/>
 </div>
+<script type="text/javascript" src="jslib/jquery-1.10.2.js"></script>
+
 </body>
+
 </html>
+

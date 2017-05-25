@@ -31,11 +31,9 @@ public class UserControl {
 	
 	@RequestMapping(path="/edit",method={RequestMethod.GET})
 	public String edit(Model mdl,HttpServletRequest request, HttpServletResponse response){		
-
-
 		
 		log.info("user/edit");		//
-		return "user/user_edit";
+		return "user/user_edit.page";
 	}
 	
 	@RequestMapping(path="/saveuser",method={RequestMethod.POST})

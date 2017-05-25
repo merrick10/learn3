@@ -9,15 +9,18 @@
 		<put-attribute name="footer" value="/WEB-INF/jsp/global/bottom.jsp"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp"></put-attribute>
 	</definition>
-	
+<!-- 	基本扩展 ,继承-->
 	<definition name="homepage" extends="base">		
 		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp"></put-attribute>	
 	</definition>
-	
+<!-- 	基本扩展 ,继承-->
 	<definition name="userpage" extends="base">
 		<put-attribute name="body" value="/WEB-INF/jsp/user/user_list.jsp"></put-attribute>
 	</definition>
-	
+<!-- 	路径通配符匹配,继承 -->
+	<definition name="*/*.page" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"></put-attribute>
+	</definition>
 
 
 </tiles-definitions>
