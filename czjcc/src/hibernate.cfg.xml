@@ -25,13 +25,14 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.zeroDateTimeBehavior">convertToNull</property>
         <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-<!-- 		<property name="hibernate.dialect">com.czjpcoms.db.ExMysqlDialect</property> -->
+<!--         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
+		<property name="hibernate.dialect">com.merrick.db.ExMysqlDialect</property>
         <property name="hibernate.generate_statistics">true</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.show_sql">false</property>
 
         <mapping resource="com/merrick/entity/Siteuser.hbm.xml" />
+		<mapping resource="com/merrick/entity/Tonggao.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>

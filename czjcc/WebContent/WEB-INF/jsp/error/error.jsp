@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body>
-
+<br/>
 <h1 style="color: red;font-size: 20px;	">访问错误，请尝试其他路径。错误信息：<span style="color:grey;"><c:out value="${errinfo}"></c:out></span></h1>
 
 <br/>

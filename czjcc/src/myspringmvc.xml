@@ -39,8 +39,11 @@
 		<property name="sessionFactory" ref="mySessionFactory"/>
 	</bean>
 	
-	<bean id="mybasedao" class="com.merrick.db.BaseHibernateImpl">
+	<bean id="mybasedao" class="com.merrick.db.BaseHibernateImpl" >
 		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>
+	
+	<bean id="myinfoimpl" class="com.merrick.db.TonggaoImpl">	
 	</bean>
 	
 	

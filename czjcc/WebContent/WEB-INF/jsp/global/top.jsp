@@ -17,10 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 <script type="text/javascript">
 
-	window.onload = function(){
-		
-		
-	}
 </script>
 </head>
 <body>
@@ -36,20 +32,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 
 		<tr>
-			<td style="line-height: 25px;">				
+			<td style="line-height: 20px;">				
 					<ul  style="" class="toppage" >
-						<li style=""><a href="user/edit">用户信息</a></li>
+						<li style="width:auto;"><a href="user/edit">用户信息编辑</a></li>						
 						<li>|</li>
-						<li><a href="">活动登记</a></li>
+						<li style="width:auto"><a href="info/edit">内容发布编辑</a></li>
 						<li>|</li>
-						<li><a href="">内容发布</a></li>
+						<li style="width:auto"><a href="pmail/setting">E-mail设定</a></li>
 						<li>|</li>
-						<li><a href="">文件上传</a></li>
-						<li>|</li>
-						<li><a href="">文件下载</a></li>
+						<li style="width:auto"><a href="fileop/upload">文件上传</a></li>
+
 					</ul>
-			</td>
-		</tr>		
+			</td>						
+		</tr>
+		<tr>
+			<td style="line-height: 20px;">				
+					<ul  style="" class="toppage" >
+						<li  style="width:auto"><a href="user/listall">用户信息列表</a></li>
+						<li>|</li>
+						<li style="width:auto"><a href="info/list">内容发布列表</a></li>
+						<li>|</li>						
+						<li style="width:auto"><a href="fileop/download">文件下载</a></li>
+						<li>|</li>
+						<li style="width:auto"><a href="pmail/list">个人邮箱</a></li>
+						<li>|</li>
+						<li style="width:auto"><a href="forum/catalog">论坛</a></li>
+					</ul>
+			</td>						
+		</tr>
+		
 	</table>
 </div>
 </body>

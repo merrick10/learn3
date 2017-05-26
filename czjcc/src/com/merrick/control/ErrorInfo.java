@@ -25,7 +25,8 @@ public class ErrorInfo extends ParentControl{
 		
 		mdl.addAttribute("errinfo",  errnum);
 		
-		return "error/error";		
+		//return "error/error";
+		return "error/error.page";
 	}
 	
 	@RequestMapping(value="/uncaughtException" ,method=RequestMethod.GET)
@@ -33,7 +34,8 @@ public class ErrorInfo extends ParentControl{
 		
 		mdl.addAttribute("errinfo",  e.toString());//看似不能完全捕获
 		
-		return "error/error";		
+		//return "error/error";		
+		return "error/error.page";
 	}
 	
 	

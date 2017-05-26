@@ -72,6 +72,17 @@ ul.toppage li{
 	text-align: center;
 }
 
+ul.toppage li a{
+	text-decoration: none;
+	color:captiontext;
+}
+
+ul.toppage li a:HOVER{
+	text-decoration: underline;
+	color:teal;
+}
+
+
 table.edit{
 	width:800px;
 	border: 1px solid #CCCCCC;
@@ -82,15 +93,14 @@ table.edit{
 }
 table.edit tr td{
 	line-height:30px;
-	padding: 2px;	
-	
+	padding: 2px;		
 }
 
 p.nowloaction{
 	color: #666666;
 	font-size: 12px;
 	margin: auto;
-	width: 800px;
+	width: 850px;
 	margin-top: 5px;	
 }
 p.nowloaction:BEFORE {
