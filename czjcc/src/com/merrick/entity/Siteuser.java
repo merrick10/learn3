@@ -30,6 +30,8 @@ public class Siteuser extends BaseEntity  implements java.io.Serializable {
 	private Date lastlogin;
 	
 	private Date lastpost;
+	
+	private Set tonggaos = new HashSet(0);
 
 
 	public Siteuser() {
@@ -43,7 +45,7 @@ public class Siteuser extends BaseEntity  implements java.io.Serializable {
 	}
 
 	public Siteuser(String id, String name, String cipher, Integer gender, String birth, String email, String tel,
-			String intro, int level, Date lastlogin, Date lastpost 
+			String intro, int level, Date lastlogin, Date lastpost ,Set tonggaos
 			) {
 		this.id = id;
 		this.name = name;
@@ -56,6 +58,7 @@ public class Siteuser extends BaseEntity  implements java.io.Serializable {
 		this.level = level;
 		this.lastlogin = lastlogin;
 		this.lastpost = lastpost;
+		this.tonggaos = tonggaos;
 
 	}
 	public String getBirth() {
@@ -143,5 +146,13 @@ public class Siteuser extends BaseEntity  implements java.io.Serializable {
 
 	public void setLastpost(Date lastpost) {
 		this.lastpost = lastpost;
+	}
+	
+	public Set getTonggaos() {
+		return tonggaos;
+	}
+
+	public void setTonggaos(Set tonggaos) {
+		this.tonggaos = tonggaos;
 	}
 }

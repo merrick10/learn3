@@ -39,6 +39,12 @@
             <column name="lastpost" length="19" />
         </property>
         
+        <set name="tonggaos" table="tonggao"  inverse="true" lazy="true" fetch="select">
+        	<key>
+        		<column name="puber" length="16" not-null="true"></column>
+        	</key>
+        	<one-to-many class="com.merrick.entity.Tonggao"/>
+        </set>
 
         
         

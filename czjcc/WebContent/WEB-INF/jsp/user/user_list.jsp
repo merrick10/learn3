@@ -20,11 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="mainDiv">
 <BR/>
 <p class="nowloaction">用户管理 &#187 列表</p>
-<BR/>
+
 <form action="user/" method="POST">
 <table class="edit" border="0"  style="margin:auto;" cellpadding="0" cellspacing="0" >
 	<caption><h2 style="color: blue;" contextmenu="" draggable="true">用户-列表</h2></caption>
-	<thead >	
+	<thead  style="background-color: #CCCCCC;">	
 	<tr>
 		<td style="width:15%;font-weight: bold;text-align: center;">NUMBER</td>
 		<td style="width: 20%;font-weight: bold;text-align: center;">ID</td>
@@ -46,8 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </c:forEach>	
 
-	
-	
+<input type="hidden" id="hd1" value="aaa" />	
 	
 </table>
 
