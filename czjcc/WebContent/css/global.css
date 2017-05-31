@@ -72,12 +72,12 @@ ul.toppage li{
 	text-align: center;
 }
 
-ul.toppage li a{
+ul.toppage li a,a{
 	text-decoration: none;
 	color:captiontext;
 }
 
-ul.toppage li a:HOVER{
+ul.toppage li a:HOVER,a:hover{
 	text-decoration: underline;
 	color:teal;
 }
@@ -107,7 +107,7 @@ p.nowloaction:BEFORE {
 	content: '\21E8您当前位置：';
 }
 
-input[type=text].edittxt{
+input[type=text].edittxt,input[type=password].edittxt{
 	width:300px;
 	height: 24px;
 }

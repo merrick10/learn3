@@ -1,14 +1,25 @@
 package com.merrick.control;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Request;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.merrick.db.BaseHibernateImpl;
@@ -28,14 +39,14 @@ public class UserControl {
 	private BaseHibernateImpl bhi;
 	
 	@RequestMapping(path="/edit",method={RequestMethod.GET})
-	public String edit(Model mdl,HttpServletRequest request, HttpServletResponse response){		
+	public String editonesiteuser(Model mdl,HttpServletRequest request, HttpServletResponse response){		
 		
 		log.info("user/edit");		//
 		return "user/user_edit.page";
 	}
 	
 	@RequestMapping(path="/saveuser",method={RequestMethod.POST})
-	public String saveuser(Siteuser user){		
+	public String saveonesiteuser(Siteuser user){		
 		
 		log.info("ID: "+user.getId());//
 		log.info("NAME: "+user.getName());
@@ -56,7 +67,7 @@ public class UserControl {
 	
 	
 	@RequestMapping(path="/list",method={RequestMethod.GET})
-	public String list(Model mdl){		
+	public String list_admin(Model mdl){		
 
 		log.info("user/list");		//
 		mdl.addAttribute("user", db.getOneUserFromID("admin"));
@@ -65,7 +76,7 @@ public class UserControl {
 	}
 	
 	@RequestMapping(path="/listall",method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView listall(Model mdl){
+	public ModelAndView listallsiteusers(Model mdl){
 		
 
 		log.info("user/list");		//
@@ -77,10 +88,123 @@ public class UserControl {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("userpage");	
 		
-		return mav;
-		
+		return mav;		
 	}
 	
+	@RequestMapping(path="/signout",method={RequestMethod.GET})
+	public String siteusersignout(HttpServletRequest req){
+		
+		log.info("user logout");
+		
+		req.getSession().removeAttribute("user");
+		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/signinpage",method={RequestMethod.GET})
+	public String signininput(HttpServletRequest req){
+		
+		log.info("for user login");
+		
+		
+	
+		return "user/user_login.page";
+	}
+	
+	@RequestMapping(path="/signinverify",method={RequestMethod.POST})
+	public String siteusersignin(HttpServletRequest req){
+		
+		log.info("varify user login");
+		
+		String id = req.getParameter("uid");
+		String psw = req.getParameter("upsw");
+		String rcode = req.getParameter("rancode");
+		
+		
+		String codeinsession = (String) req.getSession().getAttribute("rcode");
+		
+
+		return "redirect:/";
+	}
+
+	
+	@RequestMapping(path="/rcode",method={RequestMethod.GET})
+	public void getuservcode(HttpServletRequest req, HttpServletResponse resp){
+		
+		log.info("varify user login");
+		OutputStream os = null;
+		
+		try {
+			os = resp.getOutputStream();
+			resp.setContentType("image/jpeg;charset=UTF-8");
+			
+			
+			
+			BufferedImage bi = new BufferedImage(100,30, BufferedImage.TYPE_INT_RGB);
+			Graphics2D g = bi.createGraphics(); 
+			
+			//g.setBackground(Color.getHSBColor( 0.5f,0.2f, 0.7f));
+//			g.setBackground(Color.lightGray);
+			g.setColor(Color.getHSBColor( 0.3f,0.8f, 0.7f));
+			g.fillRect(0, 0, 100, 30);
+			
+			
+			g.setColor(Color.black);
+	//		g.drawLine(0, 0, 100, 10);
+			
+			
+			g.drawLine(0, 0, 100, 30);
+			
+			char[] ch = new char[5];
+			
+			for (int i = 0; i < ch.length; i++) {
+				
+				Random r = new Random();
+				int n1 = r.nextInt(10);
+				
+				int n2  = r.nextInt(26);
+				
+				int corn = r.nextInt(2);
+				
+				int c = 0;
+				if(corn == 0){
+					c = (int)'A'  + n2 ;
+					ch[i] = (char) c;
+				}else{
+					c = (int)'0'  + n1 ;
+					ch[i] = (char) c;
+				}
+									
+			}
+			g.setFont(new Font(null, Font.ITALIC, 16));
+			g.drawString(new String(ch), 18, 20); 		
+			
+			g.dispose();
+			bi.flush();
+			
+			
+			
+			log.info("Code: "+ new String(ch));
+			//g.drawString(str, x, y);
+			
+			ImageIO.write(bi, "JPEG", os);
+			os.flush();
+			
+			
+			
+		} catch (IOException e) {
+			log.warn(e.toString());
+		} finally{
+			try {
+				if (os!=null)
+					os.close();
+			} catch (IOException e) {
+				log.warn(e.toString());
+			}
+		}
+		
+		
+		
+	}
 	
 
 }

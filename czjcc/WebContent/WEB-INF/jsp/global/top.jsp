@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*"  contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,10 +22,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div id="mainDiv">
+<fmt:setLocale value="zh_CN"/>
+
 	<table border="0" class="toppage" style="margin:auto;" cellpadding="0" cellspacing="0" >
 		<tr style="">
-			<td style="line-height: 25px;">
-				<h1 style="color: pink;" >TOP Page</h1>
+			<td style="line-height: 25px;text-align: right; padding-right: 5px;">
+					
+					
+				<c:choose>
+					<c:when test="${empty sessionScope.user }">
+						<h3 style="color: blue;" >
+							<fmt:message  key="vistor"/>,<a href="user/signinpage"><fmt:message key="gologin" /></a>
+						</h3>	
+					</c:when>
+					<c:otherwise>
+						<h3 style="color: pink;" >
+						<fmt:message key="welmsg">
+							<fmt:param value="${sessionScope.user.name}"></fmt:param>
+						</fmt:message>	
+						&nbsp;<a href="user/signout">[<fmt:message key="signout"/>]</a>
+						</h3>				
+					</c:otherwise>
+				</c:choose>
+				
+								
 			</td>			
 		</tr>
 		<tr>

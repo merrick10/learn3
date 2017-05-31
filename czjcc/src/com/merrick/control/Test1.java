@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.merrick.entity.Siteuser;
+
 @Controller
 @RequestMapping("/test1")
 public class Test1 extends ParentControl{
@@ -19,11 +21,17 @@ public class Test1 extends ParentControl{
 	
 	
 	@RequestMapping(path="/f1",method={RequestMethod.GET})
-	public String f1(Model mdl){
+	public String f1(Model mdl,HttpServletRequest req){
 		
 		String str1 = new Date().toString();
 		mdl.addAttribute("str_datetime", str1);
-		log.info("½øÈëtest1/f1");
+		mdl.addAttribute("obj_datetime", new Date());
+		
+		Siteuser u = new Siteuser();
+		u.setId("111");
+		u.setName("ffadmin");		
+		req.getSession().setAttribute("user", u);
+		log.info("test1/f1");
 		
 		return "test/test1";
 	}
