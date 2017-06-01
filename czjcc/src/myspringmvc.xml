@@ -21,6 +21,8 @@
 	
 	<context:component-scan  base-package="com.merrick.control" />
 
+	<mvc:annotation-driven />
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/jsp/"></property>
         <property name="suffix" value=".jsp"></property>	
@@ -62,6 +64,11 @@
 	
 	<mvc:interceptors>
 		<bean class="com.merrick.servlet.BasicInterceptor"></bean>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.merrick.servlet.MyAuthInterceptor"/>
+		</mvc:interceptor>
+		
 		<mvc:interceptor>
 			<mvc:mapping path="/user/edit"/>
 			<bean class="com.merrick.servlet.UserInterceptor"></bean>

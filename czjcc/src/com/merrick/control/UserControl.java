@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.merrick.db.BaseHibernateImpl;
 import com.merrick.db.SiteUserDAOImpl;
 import com.merrick.entity.Siteuser;
+import com.merrick.util.MyAuth;
 
 @Controller
 @RequestMapping("/user")
@@ -73,6 +74,7 @@ public class UserControl {
 		return "user/user_list";
 	}
 	
+	@MyAuth(level=0)
 	@RequestMapping(path="/listall",method={RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView listallsiteusers(Model mdl){
 		

@@ -55,6 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 			<td style="line-height: 20px;">				
 					<ul  style="" class="toppage" >
+						<li style="width:auto;"><a href=".">首页</a></li>						
+						<li>|</li>
+					
 						<li style="width:auto;"><a href="user/edit">用户信息编辑</a></li>						
 						<li>|</li>
 						<li style="width:auto"><a href="info/edit">内容发布编辑</a></li>

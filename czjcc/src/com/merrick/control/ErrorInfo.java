@@ -21,9 +21,12 @@ public class ErrorInfo extends ParentControl{
 	private static Logger log = Logger.getLogger(ErrorInfo.class);
 	
 	@RequestMapping(value="/{errnum}" ,method=RequestMethod.GET)
-	public String errorpage(@PathVariable int errnum, Model mdl){
+	public String errorpage(@PathVariable int errnum, Model mdl,HttpServletRequest req){
 		
-		mdl.addAttribute("errinfo",  errnum);
+		log.info(errnum);
+		
+		mdl.addAttribute("errinfo1",  errnum);
+		mdl.addAttribute("errinfo2",  req.getAttribute("info"));
 		
 		//return "error/error";
 		return "error/error.page";
@@ -31,8 +34,8 @@ public class ErrorInfo extends ParentControl{
 	
 	@RequestMapping(value="/uncaughtException" ,method=RequestMethod.GET)
 	public String errorpage(Model mdl,Exception e){
-		
-		mdl.addAttribute("errinfo",  e.toString());//看似不能完全捕获
+		log.info("uncaughtException");
+		mdl.addAttribute("errinfo1",  e.toString());//看似不能完全捕获
 		
 		//return "error/error";		
 		return "error/error.page";
