@@ -188,11 +188,13 @@ public class BaseHibernateImpl {
 		BaseEntity baseEntity = null;
 		try {
 			session = this.sessionFactory.getCurrentSession();
+			transaction = session.beginTransaction();	
 			Query query = session.createSQLQuery(sql).addEntity(cs);
 			list = (List) query.list();
 			if (list.size() > 0) {
 				baseEntity = list.get(0);
 			}
+			transaction.commit();
 			return baseEntity;
 		} catch (HibernateException e) {
 			e.printStackTrace();

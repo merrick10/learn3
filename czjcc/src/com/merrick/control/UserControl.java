@@ -12,14 +12,12 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.connector.Request;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.merrick.db.BaseHibernateImpl;
@@ -119,11 +117,47 @@ public class UserControl {
 		String psw = req.getParameter("upsw");
 		String rcode = req.getParameter("rancode");
 		
+		log.info("RanCode_user_submit: [" +  rcode + "]");
+		String codeinsession = (String) req.getSession().getAttribute("vrcode");
+		log.info("RanCode_system: [" +  codeinsession + "]");
 		
-		String codeinsession = (String) req.getSession().getAttribute("rcode");
+		if(id == null || psw == null){
+			//用户名/密码空
+			log.info("用户名/密码空");
+			return "redirect:signinpage";
+		}
 		
-
-		return "redirect:/";
+		if(codeinsession!=null && rcode != null && rcode.equals(codeinsession)){
+			
+			Object obj = bhi.findOneBySql(Siteuser.class, "select * from siteuser where id='"+id+"'");
+							
+			if(obj!=null){
+				Siteuser u = (Siteuser) obj;
+				String correctencpsw = u.getCipher();
+				String psw_user_submit_enc = org.apache.commons.codec.digest.DigestUtils.md5Hex(psw);
+				
+				if(correctencpsw.equals(psw_user_submit_enc)){
+					req.getSession(true).setAttribute("user", u);
+					//验证通过
+					log.info("验证通过");
+					return "redirect:/";
+				}else{
+					//密码错误
+					log.info("密码错误");
+					return "redirect:signinpage";
+				}				
+			}else{
+				//不存在此ID
+				log.info("不存在此ID");
+				return "redirect:signinpage";
+			}						
+			
+		}else{
+			//验证码错误
+			log.info("验证码错误");
+			return "redirect:signinpage";
+		}
+			
 	}
 
 	
@@ -135,22 +169,18 @@ public class UserControl {
 		
 		try {
 			os = resp.getOutputStream();
-			resp.setContentType("image/jpeg;charset=UTF-8");
-			
-			
+			resp.setContentType("image/jpeg;charset=UTF-8");			
 			
 			BufferedImage bi = new BufferedImage(100,30, BufferedImage.TYPE_INT_RGB);
 			Graphics2D g = bi.createGraphics(); 
 			
 			//g.setBackground(Color.getHSBColor( 0.5f,0.2f, 0.7f));
 //			g.setBackground(Color.lightGray);
-			g.setColor(Color.getHSBColor( 0.3f,0.8f, 0.7f));
-			g.fillRect(0, 0, 100, 30);
-			
+			g.setColor(Color.yellow);
+			g.fillRect(0, 0, 100, 30);			
 			
 			g.setColor(Color.black);
-	//		g.drawLine(0, 0, 100, 10);
-			
+	//		g.drawLine(0, 0, 100, 10);			
 			
 			g.drawLine(0, 0, 100, 30);
 			
@@ -180,16 +210,14 @@ public class UserControl {
 			
 			g.dispose();
 			bi.flush();
-			
-			
-			
+						
 			log.info("Code: "+ new String(ch));
 			//g.drawString(str, x, y);
 			
 			ImageIO.write(bi, "JPEG", os);
 			os.flush();
 			
-			
+			req.getSession(false).setAttribute("vrcode", new String(ch));			
 			
 		} catch (IOException e) {
 			log.warn(e.toString());
@@ -200,11 +228,8 @@ public class UserControl {
 			} catch (IOException e) {
 				log.warn(e.toString());
 			}
-		}
+		}		
 		
-		
-		
-	}
-	
+	}	
 
 }

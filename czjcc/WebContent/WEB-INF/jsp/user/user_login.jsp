@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td  style="text-align: left;"><img alt="NONE" src="user/rcode" style="height: 30px;width: 100px;" ></td>
+					<td  style="text-align: left;"><img alt="NONE" src="user/rcode" style="height: 30px;width: 100px;" onclick="reloadpic(this)"></td>
 				</tr>
 				
 				<tr>
@@ -62,6 +62,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function save(){
 		document.getElementsByTagName('form').item(0).submit();
 	}
+	function reloadpic(obj){
+		var stimestr = new Date().getTime();
+		obj.src='user/rcode?p='+stimestr;//
+	}
+
+	
+
+
 </script>
 
 
