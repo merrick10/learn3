@@ -8,11 +8,12 @@ import java.util.Set;
 
 public class Siteuser extends BaseEntity  implements java.io.Serializable {
 	
-	
+	@org.hibernate.validator.constraints.NotEmpty(message = "{user.id.notnull}")
 	private String id;
 	
 	private String name;
 	
+	@org.hibernate.validator.constraints.NotEmpty(message = "{user.psw.notnull}")
 	private String cipher;
 	
 	private Integer gender;

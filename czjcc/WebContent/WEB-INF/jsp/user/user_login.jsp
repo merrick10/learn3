@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,16 +24,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<BR/>
 		<p class="nowloaction">用户登录</p>
 		<BR/>
-		<form action="user/signinverify" method="POST">
+		<sf:form modelAttribute="user" method="post" action="user/signinverify" >		
+<%-- 			<sf:errors path="*"/> --%>
+<!-- 		<form action="user/signinverify" method="POST"> -->
 			<table class="edit" border="0"  style="margin:auto;" cellpadding="0" cellspacing="0" >
 				<caption><h2 style="color: blue;" contextmenu="" draggable="true">用户-登录</h2></caption>
 				<tr>
 					<td style="width: 20%;font-weight: bold;text-align: right;" valign="bottom"><fmt:message key="uname"/></td>
-					<td style="width: 80%;text-align: left;" valign="bottom"><input type="text"  maxlength="20"  name="uid" class="edittxt"/></td>
+					<td style="width: 80%;text-align: left;" valign="bottom">
+<!-- 						<input type="text"  maxlength="20"  name="uid" class="edittxt"/> -->
+						
+						<sf:input path="id" /><sf:errors path="id" cssClass="errorClass" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;font-weight: bold;text-align: right;" valign="bottom"><fmt:message key="psw"/></td>
-					<td style="text-align: left;" valign="bottom"><input type="password" maxlength="50"  name="upsw" class="edittxt"/></td>
+					<td style="text-align: left;" valign="bottom">
+<!-- 						<input type="password" maxlength="50"  name="upsw" class="edittxt"/> -->
+						<sf:password path="cipher"/><sf:errors path="cipher"  cssClass="errorClass"/>
+						
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;font-weight: bold;text-align: right;" valign="bottom"><fmt:message key="randomcode"/></td>
@@ -50,7 +61,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td colspan="2" style="text-align: right;padding-right: 10PX;"><input type="button"  class="operatebtn" value='<fmt:message key="signin" />' onclick="save()"/></td>
 				</tr>
 			</table>
-		</form>
+<!-- 		</form> -->
+		
+		</sf:form>
+		
 		<br/>
 		<hr/>
 		</div>

@@ -16,6 +16,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +27,8 @@ import com.merrick.db.BaseHibernateImpl;
 import com.merrick.db.SiteUserDAOImpl;
 import com.merrick.entity.Siteuser;
 import com.merrick.util.MyAuth;
+
+
 
 @Controller
 @RequestMapping("/user")
@@ -36,6 +41,13 @@ public class UserControl {
 	
 	@Autowired
 	private BaseHibernateImpl bhi;
+	
+//	@InitBinder
+//	public void initBinder(DataBinder bd){
+//		bd.replaceValidators(new SiteuserValidator());
+//	}
+	
+	
 	
 	@RequestMapping(path="/edit",method={RequestMethod.GET})
 	public String editonesiteuser(Model mdl,HttpServletRequest request, HttpServletResponse response){		
@@ -76,7 +88,7 @@ public class UserControl {
 	
 	@MyAuth(level=0)
 	@RequestMapping(path="/listall",method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView listallsiteusers(Model mdl){
+	public ModelAndView listallsiteusers(Model mdl){//所有用户列表信息
 		
 
 		log.info("user/list");		//
@@ -92,7 +104,7 @@ public class UserControl {
 	}
 	
 	@RequestMapping(path="/signout",method={RequestMethod.GET})
-	public String siteusersignout(HttpServletRequest req){
+	public String siteusersignout(HttpServletRequest req){//登出
 		
 		log.info("user logout");
 		
@@ -100,36 +112,44 @@ public class UserControl {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(path="/signinpage",method={RequestMethod.GET})
-	public String signininput(HttpServletRequest req){
+	
+	
+	@RequestMapping(path="/signinpage",method={RequestMethod.GET,RequestMethod.POST})
+	public String signininput(HttpServletRequest req, Model mdl){//登录页
 		
-		log.info("for user login");
+		log.info("for user login");		
 		
-		
+		mdl.addAttribute("user", new Siteuser());
 	
 		return "user/user_login.page";
 	}
 	
+	
+	
 	@RequestMapping(path="/signinverify",method={RequestMethod.POST})
-	public String siteusersignin(HttpServletRequest req){
+	public String siteusersignin(HttpServletRequest req,  @Validated @ModelAttribute("user") Siteuser user, BindingResult br){//提交后验证
 		
-		log.info("varify user login");
+		log.info("verify user login");
 		
-		String id = req.getParameter("uid");
-		String psw = req.getParameter("upsw");
+		if(br.hasErrors()){
+			return "user/user_login.page";
+		}
+		
+		String id = req.getParameter("id");
+		String psw = req.getParameter("cipher");
 		String rcode = req.getParameter("rancode");
 		
 		log.info("RanCode_user_submit: [" +  rcode + "]");
 		String codeinsession = (String) req.getSession().getAttribute("vrcode");
 		log.info("RanCode_system: [" +  codeinsession + "]");
 		
-		if(id == null || psw == null){
+		if(id == null || psw == null|| "".equals(id)||"".equals(psw)){
 			//用户名/密码空
 			log.info("用户名/密码空");
-			return "redirect:signinpage";
+			return "forward:signinpage";
 		}
 		
-		if(codeinsession!=null && rcode != null && rcode.equals(codeinsession)){
+		if(codeinsession!=null && rcode != null && !"".equals(rcode) && rcode.equals(codeinsession)){
 			
 			Object obj = bhi.findOneBySql(Siteuser.class, "select * from siteuser where id='"+id+"'");
 							
@@ -166,7 +186,7 @@ public class UserControl {
 	@RequestMapping(path="/rcode",method={RequestMethod.GET})
 	public void getuservcode(HttpServletRequest req, HttpServletResponse resp){
 		
-		log.info("varify user login");
+		log.info("get random code");
 		OutputStream os = null;
 		
 		try {

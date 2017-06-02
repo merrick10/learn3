@@ -21,7 +21,7 @@
 	
 	<context:component-scan  base-package="com.merrick.control" />
 
-	<mvc:annotation-driven />
+	<mvc:annotation-driven validator="myvalidator"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/jsp/"></property>
@@ -33,9 +33,9 @@
 	</bean>
 
 
-	<bean id="mytx" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="mySessionFactory"></property>
-	</bean>
+<!-- 	<bean id="mytx" class="org.springframework.orm.hibernate3.HibernateTransactionManager"> -->
+<!-- 		<property name="sessionFactory" ref="mySessionFactory"></property> -->
+<!-- 	</bean> -->
 	
 	<bean id="myuserdao" class="com.merrick.db.SiteUserDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory"/>
@@ -45,8 +45,8 @@
 		<property name="sessionFactory" ref="mySessionFactory"/>
 	</bean>
 	
-	<bean id="myinfoimpl" class="com.merrick.db.TonggaoImpl">	
-	</bean>
+	<bean id="myinfoimpl" class="com.merrick.db.TonggaoImpl" />	
+
 	
 	
 	<bean id="tilesconfig"  class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -60,6 +60,10 @@
 	<bean id="tilesviewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="order" value="1" />
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message"></property>	
 	</bean>
 	
 	<mvc:interceptors>
@@ -77,11 +81,15 @@
 			<mvc:mapping path="/info/save"/>
 			<bean class="com.merrick.servlet.InfoInterceptor"></bean>
 		</mvc:interceptor>		
-	</mvc:interceptors>
+	</mvc:interceptors>	
 	
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="message"></property>	
-	</bean>
+	
+
+<bean id="myvalidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">  
+        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>          
+<!--         如果不加默认到 使用classpath下的 ValidationMessages.properties   -->
+        <property name="validationMessageSource" ref="messageSource"/>  
+</bean>  
 	
       
 </beans>
