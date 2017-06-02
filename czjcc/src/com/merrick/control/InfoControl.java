@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.merrick.db.TonggaoImpl;
+import com.merrick.entity.Tonggao;
+import com.merrick.validators.TonggaoValidator;
 
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
@@ -27,6 +31,9 @@ import net.sf.json.JSONObject;
 public class InfoControl {
 	
 	private static Logger log =  Logger.getLogger(InfoControl.class.getName());
+	
+	@Autowired
+	private TonggaoValidator tv;
 	
 	@Autowired
 	private TonggaoImpl ti ;
@@ -55,9 +62,29 @@ public class InfoControl {
 			response.getWriter().print(jsstr);
 		} catch (IOException e) {
 			log.error(e.toString());
+		}		
+	} 
+	
+	@RequestMapping(path="/edit",method={RequestMethod.GET})
+	public String editdetailinfo(Model mdl){
+		
+		mdl.addAttribute("commoninfo", new Tonggao());
+		
+		return "info/info_edit.page";		
+	} 
+	
+	@RequestMapping(path="/submit",method={RequestMethod.POST})
+	public String saveoneinfo(Model mdl, @ModelAttribute("commoninfo") Tonggao info, Errors errs){
+		
+		tv.validate(info, errs);
+		if(errs.hasErrors()){
+			return "info/info_edit.page";
 		}
 		
 		
+		return "redirect:/info/list";		
 	} 
+	
+	
 
 }

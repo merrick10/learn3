@@ -58,9 +58,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li style="width:auto;"><a href=".">首页</a></li>						
 						<li>|</li>
 					
-						<li style="width:auto;"><a href="user/edit">用户信息编辑</a></li>						
+						<li style="width:auto;"><a href="user/edit">用户编辑</a></li>						
 						<li>|</li>
-						<li style="width:auto"><a href="info/edit">内容发布编辑</a></li>
+						<li style="width:auto"><a href="info/edit">发布编辑</a></li>
 						<li>|</li>
 						<li style="width:auto"><a href="pmail/setting">E-mail设定</a></li>
 						<li>|</li>
@@ -72,9 +72,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 			<td style="line-height: 20px;">				
 					<ul  style="" class="toppage" >
-						<li  style="width:auto"><a href="user/listall">用户信息列表</a></li>
+						<li  style="width:auto"><a href="user/listall">用户列表</a></li>
 						<li>|</li>
-						<li style="width:auto"><a href="info/list">内容发布列表</a></li>
+						<li style="width:auto"><a href="info/list">发布列表</a></li>
 						<li>|</li>						
 						<li style="width:auto"><a href="fileop/download">文件下载</a></li>
 						<li>|</li>

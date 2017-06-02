@@ -19,13 +19,13 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
        "> 
 	
-	<context:component-scan  base-package="com.merrick.control" />
+	<context:component-scan  base-package="com.merrick.control,com.merrick.validators" />
 
 	<mvc:annotation-driven validator="myvalidator"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
-        <property name="prefix" value="/WEB-INF/jsp/"></property>
-        <property name="suffix" value=".jsp"></property>	
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />	
 	</bean>
 	
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -63,11 +63,12 @@
 	</bean>
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="message"></property>	
+		<property name="basename" value="message" />	
 	</bean>
 	
 	<mvc:interceptors>
-		<bean class="com.merrick.servlet.BasicInterceptor"></bean>
+		<bean class="com.merrick.servlet.BasicInterceptor" />
+		
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<bean class="com.merrick.servlet.MyAuthInterceptor"/>
@@ -75,11 +76,11 @@
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/user/edit"/>
-			<bean class="com.merrick.servlet.UserInterceptor"></bean>
+			<bean class="com.merrick.servlet.UserInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/info/save"/>
-			<bean class="com.merrick.servlet.InfoInterceptor"></bean>
+			<bean class="com.merrick.servlet.InfoInterceptor" />
 		</mvc:interceptor>		
 	</mvc:interceptors>	
 	
@@ -87,7 +88,7 @@
 
 <bean id="myvalidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">  
         <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>          
-<!--         如果不加默认到 使用classpath下的 ValidationMessages.properties   -->
+<!--         如果不加默认到 使用classpath下的 ValidationMessages.properties, 字段校验国际化消息采用本webapp的国际化资源文件  -->
         <property name="validationMessageSource" ref="messageSource"/>  
 </bean>  
 	

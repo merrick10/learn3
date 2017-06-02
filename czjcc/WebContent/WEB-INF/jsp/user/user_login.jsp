@@ -34,14 +34,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td style="width: 80%;text-align: left;" valign="bottom">
 <!-- 						<input type="text"  maxlength="20"  name="uid" class="edittxt"/> -->
 						
-						<sf:input path="id" /><sf:errors path="id" cssClass="errorClass" />
+						<sf:input path="id" /><sf:errors path="id" cssClass="errorClass" cssStyle="color:red; font-size:12px;"/>
 					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;font-weight: bold;text-align: right;" valign="bottom"><fmt:message key="psw"/></td>
 					<td style="text-align: left;" valign="bottom">
 <!-- 						<input type="password" maxlength="50"  name="upsw" class="edittxt"/> -->
-						<sf:password path="cipher"/><sf:errors path="cipher"  cssClass="errorClass"/>
+						<sf:password path="cipher"/><sf:errors path="cipher"  cssClass="errorClass" cssStyle="color:red; font-size:12px;"/>
 						
 					</td>
 				</tr>
