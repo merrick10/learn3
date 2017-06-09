@@ -49,47 +49,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>			
 		</tr>
 		<tr>
-			<td ><div style="width:1280px;height:135px;;background-image: url('img/changzhou_overview1_m2.jpg'); background-repeat: no-repeat;background-position: left;"></div></td>
+			<td ><div style="width:1280px;height:135px;;background-image: url('img/chemistry_m1.png'); background-color:#EEEEEE;background-repeat: no-repeat;background-position:19.1%;">
+					<div style="color:#AA11EE;width: 100%;height:100%;;text-align:left;margin-top: 0;margin-left:400px;">
+						<h1>Chemistry Education and Research</h1></div>
+				</div>
+			</td>
 		</tr>
 
 		<tr>
 			<td style="line-height: 20px;">				
 					<ul  style="" class="toppage" >
 						<li style="width:auto;"><a href=".">首页</a></li>						
+						<li>|</li>					
+						<li style="width:auto;"><a href="">初中散题库</a></li>						
 						<li>|</li>
-					
-						<li style="width:auto;"><a href="user/edit">用户编辑</a></li>						
+						<li style="width:auto"><a href="">初中文档题库</a></li>	
 						<li>|</li>
-						<li style="width:auto"><a href="info/edit">发布编辑</a></li>
+						<li style="width:auto"><a href="">初中教学记事</a></li>	
 						<li>|</li>
-						<li style="width:auto"><a href="pmail/setting">E-mail设定</a></li>
+						<li style="width:auto"><a href="">高中散题库</a></li>
 						<li>|</li>
-						<li style="width:auto"><a href="fileop/upload">文件上传</a></li>
+						<li style="width:auto"><a href="">高中文档题库</a></li>
 						<li>|</li>
-						<li  style="width:auto"><a href="user/listall">用户列表</a></li>
-						<li>|</li>
-						<li style="width:auto"><a href="info/list">发布列表</a></li>
-						<li>|</li>						
-						<li style="width:auto"><a href="fileop/download">文件下载</a></li>
-						<li>|</li>
-						<li style="width:auto"><a href="pmail/list">个人邮箱</a></li>
-						<li>|</li>
-						<li style="width:auto"><a href="forum/catalog">论坛</a></li>
-						<li>|</li>
-						<li style="width:auto"><a href="education/new">教学整理</a></li>
-						<li>|</li>
-						<li style="width:auto"><a href="">财务整理</a></li>
-
+						<li style="width:auto"><a href="">高中教学记事</a></li>
 					</ul>
 			</td>						
 		</tr>
-<!-- 		<tr> -->
-<!-- 			<td style="line-height: 20px;">				 -->
-<!-- 					<ul  style="" class="toppage" > -->
-						
-<!-- 					</ul> -->
-<!-- 			</td>						 -->
-<!-- 		</tr> -->
+
 		
 	</table>
 </div>
