@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body>
+<div id="mainDiv">
 <h1 style="color: pink;">Runnging well Thanks for Testing</h1>
 
 <br/>
@@ -68,6 +69,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <fmt:message key="curtime">	
 	<fmt:param value="${obj_datetime}" ></fmt:param>	
 </fmt:message>
-
+</div>
 </body>
 </html>

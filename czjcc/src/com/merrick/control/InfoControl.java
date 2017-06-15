@@ -21,6 +21,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.merrick.db.TonggaoImpl;
 import com.merrick.entity.Tonggao;
+import com.merrick.util.MyAuth;
 import com.merrick.validators.TonggaoValidator;
 
 import net.sf.json.JSON;
@@ -45,6 +46,11 @@ public class InfoControl {
 		return "info/info_list.page";		
 	} 
 	
+	/**
+	 * ajax查询信息列表
+	 * @param datestr
+	 * @param response
+	 */
 	@ResponseBody
 	@RequestMapping(path="/getlistjson",method={RequestMethod.POST})
 	public void getdata_json(@RequestParam(name="optime") String datestr, HttpServletResponse response){
@@ -65,6 +71,12 @@ public class InfoControl {
 		}		
 	} 
 	
+	/**
+	 * 进入编辑页
+	 * @param mdl
+	 * @return
+	 */
+	@MyAuth(level=0)
 	@RequestMapping(path="/edit",method={RequestMethod.GET})
 	public String editdetailinfo(Model mdl){
 		
@@ -73,6 +85,14 @@ public class InfoControl {
 		return "info/info_edit.page";		
 	} 
 	
+	/**
+	 * 保存
+	 * @param mdl
+	 * @param info
+	 * @param errs
+	 * @return
+	 */
+	@MyAuth(level=0)
 	@RequestMapping(path="/submit",method={RequestMethod.POST})
 	public String saveoneinfo(Model mdl, @ModelAttribute("commoninfo") Tonggao info, Errors errs){
 		

@@ -16,7 +16,7 @@ public class EducationControl {
 	public String newoperation(){
 		
 		log.info("new update");
-		return "test/test1.page_w";
+		return "educate/edu_first.page2";
 	}
 
 }

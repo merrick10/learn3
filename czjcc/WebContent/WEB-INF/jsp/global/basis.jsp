@@ -20,9 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </script>
 </head>
-<body style="width: 100%;height: 100%;">
+<body style="">
 <div id="mainDiv" >
-	<table border="0" class="" style="margin:auto;" cellpadding="0" cellspacing="0">
+	<table border="0" class="" style="margin:0 auto;" cellpadding="0" cellspacing="0">
 		<tr style="">
 			<td style="line-height: 185px;">
 				<tiles:insertAttribute name="toper"></tiles:insertAttribute>

@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>TOP</title>
-<link type="text/css" rel="stylesheet" href="css/global.css">
+<link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
 <style type="text/css">
 
 </style>

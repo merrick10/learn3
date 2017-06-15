@@ -48,7 +48,7 @@ public class UserControl {
 //	}
 	
 	
-	
+	@MyAuth(level=0)
 	@RequestMapping(path="/edit",method={RequestMethod.GET})
 	public String editonesiteuser(Model mdl,HttpServletRequest request, HttpServletResponse response){		
 		
@@ -56,6 +56,8 @@ public class UserControl {
 		return "user/user_edit.page";
 	}
 	
+	
+	@MyAuth(level=0)
 	@RequestMapping(path="/saveuser",method={RequestMethod.POST})
 	public String saveonesiteuser(Siteuser user){		
 		
@@ -86,9 +88,14 @@ public class UserControl {
 		return "user/user_list";
 	}
 	
+	/**
+	 * 所有用户列表信息
+	 * @param mdl
+	 * @return
+	 */
 	@MyAuth(level=0)
 	@RequestMapping(path="/listall",method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView listallsiteusers(Model mdl){//所有用户列表信息
+	public ModelAndView listallsiteusers(Model mdl){//
 		
 
 		log.info("user/list");		//
@@ -103,6 +110,7 @@ public class UserControl {
 		return mav;		
 	}
 	
+	@MyAuth
 	@RequestMapping(path="/signout",method={RequestMethod.GET})
 	public String siteusersignout(HttpServletRequest req){//登出
 		

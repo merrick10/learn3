@@ -22,7 +22,7 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="*/*.page_w" extends="base">
+	<definition name="*/*.page2" extends="base">
 		<put-attribute name="toper" value="/WEB-INF/jsp/global/top_w0.jsp"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"></put-attribute>
 	</definition>

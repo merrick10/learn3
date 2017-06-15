@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>TOP</title>
-<link type="text/css" rel="stylesheet" href="css/global.css">
+<link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
 <style type="text/css">
 
 </style>
@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </script>
 </head>
-<body>
+<body style="">
 <div id="mainDiv">
 <fmt:setLocale value="zh_CN"/>
 
@@ -49,9 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>			
 		</tr>
 		<tr>
-			<td ><div style="width:1280px;height:135px;;background-image: url('img/chemistry_m1.png'); background-color:#EEEEEE;background-repeat: no-repeat;background-position:19.1%;">
-					<div style="color:#AA11EE;width: 100%;height:100%;;text-align:left;margin-top: 0;margin-left:400px;">
-						<h1>Chemistry Education and Research</h1></div>
+			<td >
+				<div style="width:1280px;height:135px;;background-image: url('img/chemistry_m1.png'); background-color:#EEEEEE;background-repeat: no-repeat;background-position:19.1%;">
+					<div style="color:#AA11EE;width: 800px;;height:130px;text-align:left;margin-top: 0;margin-left:400px;">
+						<h1 style="line-height: 120px;">Chemistry Education and Research</h1></div>
 				</div>
 			</td>
 		</tr>

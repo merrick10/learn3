@@ -29,15 +29,23 @@ table.footer td{
 	vertical-align: middle;
 }
 
+ul{
+	margin: 0;
+	border:0;
+	padding: 0;
+}
+
 ul.ulfooter{
 	color:green;
 	list-style: none;
 	display: inline-block;
-	display: -moz-inline-stack;
-	*display: inline;
+/* 	display: -moz-inline-stack; */
+/* 	*display: inline; */
 	margin: auto;
+	padding-left: 15px;
 }
 ul.ulfooter li{
+
 	float: left;
 	margin-right: 15px;
 	vertical-align: middle;
@@ -60,11 +68,12 @@ ul.toppage{
 	color:green;
 	list-style: none;
 	display: inline-block;
-	display: -moz-inline-stack;
-	*display: inline;
+/* 	display: -moz-inline-stack; */
+/* 	*display: inline; */
 	margin: auto;
 }
 ul.toppage li{
+
 	float: left;
 	margin-right: 15px;
 	vertical-align: middle;
