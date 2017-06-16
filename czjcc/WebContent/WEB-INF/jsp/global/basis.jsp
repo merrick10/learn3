@@ -11,14 +11,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title><tiles:getAsString name="thetitle"></tiles:getAsString></title>   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title><tiles:getAsString name="thetitle"></tiles:getAsString></title>  
+
 <link type="text/css" rel="stylesheet" href="css/global.css">
 <style type="text/css">
-
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
 </style>
-<script type="text/javascript">
 
-</script>
 </head>
 <body style="">
 <div id="mainDiv" >
@@ -42,7 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</table>
 
 </div>
-
 
 </body>
 </html>

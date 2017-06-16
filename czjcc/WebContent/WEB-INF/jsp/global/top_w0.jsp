@@ -11,48 +11,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>TOP</title>
+<title>TOP2</title>
 <link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
+<!-- <link type="text/css" rel="stylesheet" href="css/bootstrap3/bootstrap.css">  -->
 <style type="text/css">
 
 </style>
-<script type="text/javascript">
 
-</script>
 </head>
 <body style="">
 <div id="mainDiv">
 <fmt:setLocale value="zh_CN"/>
 
 	<table border="0" class="toppage" style="margin:auto;" cellpadding="0" cellspacing="0" >
-		<tr style="">
-			<td style="line-height: 25px;text-align: right; padding-right: 5px;">
-					
-					
-				<c:choose>
-					<c:when test="${empty sessionScope.user }">
-						<h3 style="color: blue;" >
-							<fmt:message  key="vistor"/>,<a href="user/signinpage"><fmt:message key="gologin" /></a>
-						</h3>	
-					</c:when>
-					<c:otherwise>
-						<h3 style="color: pink;" >
-						<fmt:message key="welmsg">
-							<fmt:param value="${sessionScope.user.name}"></fmt:param>
-						</fmt:message>	
-						&nbsp;<a href="user/signout">[<fmt:message key="signout"/>]</a>
-						</h3>				
-					</c:otherwise>
-				</c:choose>
-				
-								
-			</td>			
-		</tr>
+<!-- 		<tr style=""> -->
+<!-- 			<td style="line-height: 25px;text-align: right; padding-right: 5px;">								 -->
+<!-- 			</td>			 -->
+<!-- 		</tr> -->
 		<tr>
 			<td >
-				<div style="width:1280px;height:135px;;background-image: url('img/chemistry_m1.png'); background-color:#EEEEEE;background-repeat: no-repeat;background-position:19.1%;">
-					<div style="color:#AA11EE;width: 800px;;height:130px;text-align:left;margin-top: 0;margin-left:400px;">
-						<h1 style="line-height: 120px;">Chemistry Education and Research</h1></div>
+				<div style="width:1280px;height:135px;display:table-cell;text-align:right; vertical-align:text-top  ; line-height:25px;  ;padding:0;vertical-align:top;background-image: url('img/chemistry_m1.png'); background-color:#EEEEEE;background-repeat: no-repeat;background-position:19.1%;">
+
+													
+							
+							<c:choose>
+								<c:when test="${empty sessionScope.user }">
+									<span style="color: blue;font-size:13px;font-weight:bold;margin-right:10px;" >
+										<fmt:message  key="vistor"/>,<a href="user/signinpage"><fmt:message key="gologin" /></a>
+									</span>	
+								</c:when>
+								<c:otherwise>
+									<span style="color: pink;font-size:13px;font-weight:bold;margin-right:10px;" >
+										<fmt:message key="welmsg">
+											<fmt:param value="${sessionScope.user.name}"></fmt:param>
+										</fmt:message>	
+										&nbsp;<a href="user/signout">[<fmt:message key="signout"/>]</a>
+									</span>				
+								</c:otherwise>
+							</c:choose>	
+							<br/>		<br/>				
+							<br/>
+						<span style="color:#AA11EE;font-size: 24px;margin-right: 400px;font-weight: bold;">Chemistry Education and Research</span>	
 				</div>
 			</td>
 		</tr>
@@ -80,5 +79,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</table>
 </div>
+<!-- <script type="text/javascript" src="jslib/jquery-1.10.2.js"></script> -->
+<!-- <script type="text/javascript" src="jslib/bootstrap3/bootstrap.js"></script> -->
+<script type="text/javascript">
+
+
+</script>
 </body>
 </html>

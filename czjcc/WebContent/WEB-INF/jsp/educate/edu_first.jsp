@@ -12,16 +12,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>EDUCATE FIRST PAGE</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap3/bootstrap.css"> 
+<style type="text/css">
 
+</style>
 </head>
 <body style="">
+<div class="container-fluid">
 
 
-<h1 draggable="true">ECUDATE FIRST</h1>
+<h1 draggable="true">EDUCATE FIRST</h1>
 
 
+<hr/>
+A
+<hr/>
+B
+<hr/>
 
 
+</div>
+
+
+<script type="text/javascript" src="jslib/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="jslib/bootstrap3/bootstrap.js"></script>
+<script type="text/javascript">
 </script>
 </body>
 </html>
