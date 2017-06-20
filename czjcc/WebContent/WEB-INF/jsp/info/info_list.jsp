@@ -12,13 +12,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>INFOLIST</title>
 <link type="text/css" rel="stylesheet" href="css/global.css">
-
+<link type="text/css" rel="stylesheet" href="css/bootstrap3/bootstrap.css">
 </head>
 <body>
 <div id="mainDiv">
 <BR/>
 <p class="nowloaction">消息发布 &#187 列表</p>
-<table class="edit" border="0" style="margin:auto;" cellpadding="0" cellspacing="0" id="datatable">
+<table class="edit table-bordered table-striped " border="0" style="margin:auto;" cellpadding="0" cellspacing="0" id="datatable">
 	<caption><h2 style="color: blue;" contextmenu="" draggable="true">消息发布-列表</h2></caption>
 	<thead style="background-color: #CCCCCC;">	
 	<tr>

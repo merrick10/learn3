@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>TOP2</title>
 <link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
-<!-- <link type="text/css" rel="stylesheet" href="css/bootstrap3/bootstrap.css">  -->
+
 <style type="text/css">
 
 </style>
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 
 		<tr>
-			<td style="line-height: 20px;">				
+			<td style="line-height: 20px;background-color: rgba(247, 247, 247, 1);">				
 					<ul  style="" class="toppage" >
 						<li style="width:auto;"><a href=".">首页</a></li>						
 						<li>|</li>					
@@ -67,11 +67,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li>|</li>
 						<li style="width:auto"><a href="examquest/edunote/j"><span style="color:green;">初中教学记事</span></a></li>	
 						<li>|</li>
-						<li style="width:auto"><a href="examquest/san/s"><span style="color:blue;">高中散题库</span></a></li>
+						<li style="width:auto"><a href="examquest/san/s"><span style="color:navy;">高中散题库</span></a></li>
 						<li>|</li>
-						<li style="width:auto"><a href="examquest/doc/s"><span style="color:blue;">高中文档题库</span></a></li>
+						<li style="width:auto"><a href="examquest/doc/s"><span style="color:navy;">高中文档题库</span></a></li>
 						<li>|</li>
-						<li style="width:auto"><a href="examquest/edunote/s"><span style="color:blue;">高中教学记事</span></a></li>
+						<li style="width:auto"><a href="examquest/edunote/s"><span style="color:navy;">高中教学记事</span></a></li>
 					</ul>
 			</td>						
 		</tr>
@@ -79,8 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</table>
 </div>
-<!-- <script type="text/javascript" src="jslib/jquery-1.10.2.js"></script> -->
-<!-- <script type="text/javascript" src="jslib/bootstrap3/bootstrap.js"></script> -->
+
 <script type="text/javascript">
 
 

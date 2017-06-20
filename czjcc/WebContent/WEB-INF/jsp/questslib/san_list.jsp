@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>散题库-列表</title>
 <link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
-
+<link type="text/css" rel="stylesheet" href="css/bootstrap3/bootstrap.css"> 
 
 </head>
 <body>
@@ -22,11 +22,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <BR/>
 <p class="nowloaction"><c:out value="${gradeinfo}" />散题库 &#187 列表</p>
 
+<br/>
+<table style="margin:auto;width: 1000px;" cellpadding="0" cellspacing="0" >
+	<tr>
+		<td style="width:50%"></td>
+		<td style="width:50%"><input type="button" class="btn btn-primary btn-info "  value="查询"   /></td>
+	</tr>
+</table>
+
+<br/>
+
 <form action="" method="POST">
-<table class="edit" border="0"  style="margin:auto;" cellpadding="0" cellspacing="0" >
-	<caption><h2 style="color:menutext  " contextmenu="" draggable="true"><c:out value="${gradeinfo}" />散题库-列表</h2></caption>
+<table class="edit" border="0"  style="margin:auto;width: 1200px;" cellpadding="0" cellspacing="0" >
+	<caption><h3 style="color:menutext;margin-top: 0;  " contextmenu="" draggable="true"><c:out value="${gradeinfo}" />散题库-列表</h3></caption>
 	<thead  style="background-color: #CCCCCC;">	
-	<thead  style="background-color: #CCCCCC;">	
+
 	<tr>
 		<td style="width: 10%;font-weight: bold;text-align: center;">NUMBER</td>
 		<td style="width: 10%;font-weight: bold;text-align: center;">入库日期</td>

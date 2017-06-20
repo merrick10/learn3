@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title><tiles:getAsString name="thetitle"></tiles:getAsString></title>  
 
 <link type="text/css" rel="stylesheet" href="css/global.css">
+
 <style type="text/css">
 @-ms-viewport       { width: device-width; }
 @-o-viewport        { width: device-width; }

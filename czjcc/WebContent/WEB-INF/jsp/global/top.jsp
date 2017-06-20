@@ -67,50 +67,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    	<ul class="nav nav-justified nav-tabs navbar-default" style="">
 					    	
 					    		<li class=""><a  href=".">首页</a></li>
-					    		<li class=""><a href="education/new">教学整理</a></li>
-					    		
-					    		<li class="dropdown">
-					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">发布管理<b class="caret"></b></a>
-					                <ul class="dropdown-menu">
-					                    <li><a href="info/edit">发布编辑</a></li>					                    
-					                    <li class="divider"></li>
-					                    <li><a href="info/list">发布列表</a></li>	
-					                    <li class="divider"></li>
-					                    <li><a href="bbs/block">论坛</a></li>				            				                    
-					                </ul>										                
-					    		</li>
+					    		<li class=""><a href="education/new">教学整理</a></li>					    		
+					 
 					    		<li><a href="finance/firstpage">财务整理</a></li>					    		
-					    		<li class="dropdown">
-					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">文件管理<b class="caret"></b></a>
-					                <ul class="dropdown-menu">
-					                    <li><a href="fileop/upload"">文件上传</a></li>					                    
-					                    <li class="divider"></li>
-					                    <li><a href="fileop/download">文件下载</a></li>					            				                    
-					                </ul>										                
-					    		</li>
-					    		<li class="dropdown">
-					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">邮箱<b class="caret"></b></a>
-					                <ul class="dropdown-menu">
-					                    <li><a href="pmail/list">个人邮箱</a></li>					                    
-					                    <li class="divider"></li>
-					                    <li><a href="pmail/editmail">发邮件</a></li>	
-					                    <li class="divider"></li>
-					                    <li><a href="pmail/mailsetting">邮箱设定</a></li>				            				                    
-					                </ul>										                
-					    		</li>
-					    		<li class="dropdown">
-					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户管理<b class="caret"></b></a>
-					                <ul class="dropdown-menu">
-					                    <li><a href="user/edit">用户编辑</a></li>					                    
-					                    <li class="divider"></li>
-					                    <li><a href="user/listall">用户列表</a></li>					                  				            				                    
-					                </ul>										                
-					    		</li>
 					    		
-					    	</ul>
+					    		<li><a href="info/list">信息备忘发布</a></li>	
+					    		<li><a href="bbs/block">留言板</a></li>	
+					    		<li><a href="fileop/download">文件管理</a></li>	
+					    		<li><a href="pmail/list">邮箱</a></li>	
+					    		<li><a href="user/listall">用户管理</a></li>	
+					    		
+					    	</ul>	
+					    		
+<!-- 			    		   		<li class="dropdown"> -->
+<!-- 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">发布管理<b class="caret"></b></a> -->
+<!-- 					                <ul class="dropdown-menu"> -->
+<!-- 					                    <li><a href="info/edit">发布编辑</a></li>					                     -->
+<!-- 					                    <li class="divider"></li> -->
+<!-- 					                    <li><a href="info/list">发布列表</a></li>	 -->
+<!-- 					                    <li class="divider"></li> -->
+<!-- 					                    <li><a href="bbs/block">论坛</a></li>				            				                     -->
+<!-- 					                </ul>										                 -->
+<!-- 					    		</li>	 -->
+					    					    		
+<!-- 					    		<li class="dropdown"> -->
+<!-- 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">文件管理<b class="caret"></b></a> -->
+<!-- 					                <ul class="dropdown-menu"> -->
+<!-- 					                    <li><a href="fileop/upload"">文件上传</a></li>					                     -->
+<!-- 					                    <li class="divider"></li> -->
+<!-- 					                    <li><a href="fileop/download">文件下载</a></li>					            				                     -->
+<!-- 					                </ul>										                 -->
+<!-- 					    		</li> -->
+					    		
+<!-- 					    		<li class="dropdown"> -->
+<!-- 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">邮箱<b class="caret"></b></a> -->
+<!-- 					                <ul class="dropdown-menu"> -->
+<!-- 					                    <li><a href="pmail/list">个人邮箱</a></li>					                     -->
+<!-- 					                    <li class="divider"></li> -->
+<!-- 					                    <li><a href="pmail/editmail">发邮件</a></li>	 -->
+<!-- 					                    <li class="divider"></li> -->
+<!-- 					                    <li><a href="pmail/mailsetting">邮箱设定</a></li>				            				                     -->
+<!-- 					                </ul>										                 -->
+<!-- 					    		</li> -->
+					    		
+<!-- 					    		<li class="dropdown"> -->
+<!-- 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户管理<b class="caret"></b></a> -->
+<!-- 					                <ul class="dropdown-menu"> -->
+<!-- 					                    <li><a href="user/edit">用户编辑</a></li>					                     -->
+<!-- 					                    <li class="divider"></li> -->
+<!-- 					                    <li><a href="user/listall">用户列表</a></li>					                  				            				                     -->
+<!-- 					                </ul>										                 -->
+<!-- 					    		</li>					    		 -->
+<!-- 					    	</ul>				    	 -->
 					    	
-					    	
-					    	
+<!-- 					    	tiles整合多页面时，top页的bootstrap下拉菜单访问body页，并且body页中也有bootstrap特效时，之后会导致top页的下拉菜单不弹出的问题，所以在公共页不采用bootstrap下拉菜单 -->
 					    	
 					    	
 					    	
@@ -154,9 +164,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <script type="text/javascript" src="jslib/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="jslib/bootstrap3/bootstrap.js"></script>
-<script type="text/javascript">
 
-</script>
 </body>
 </html>
