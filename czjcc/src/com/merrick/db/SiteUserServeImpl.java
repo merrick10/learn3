@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.merrick.entity.Siteuser;
 
 
-public class SiteUserDAOImpl implements SiteUserDAO {
+public class SiteUserServeImpl implements SiteUserServe {
 	
 	
 	private SessionFactory mySessionFactory;

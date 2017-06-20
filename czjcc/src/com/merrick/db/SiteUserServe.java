@@ -2,7 +2,7 @@ package com.merrick.db;
 
 import com.merrick.entity.Siteuser;
 
-public interface SiteUserDAO {
+public interface SiteUserServe {
 
 	public Siteuser getOneUserFromID(String ID);
 	

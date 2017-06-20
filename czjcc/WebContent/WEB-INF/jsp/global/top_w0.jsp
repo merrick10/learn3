@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</c:choose>	
 							<br/>		<br/>				
 							<br/>
-						<span style="color:#AA11EE;font-size: 24px;margin-right: 400px;font-weight: bold;">Chemistry Education and Research</span>	
+						<span style="color:#AA11EE;font-size: 34px;margin-right: 350px;font-weight: bold;">Chemistry Education and Research</span>	
 				</div>
 			</td>
 		</tr>
@@ -61,17 +61,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul  style="" class="toppage" >
 						<li style="width:auto;"><a href=".">首页</a></li>						
 						<li>|</li>					
-						<li style="width:auto;"><a href="">初中散题库</a></li>						
+						<li style="width:auto;"><a href="examquest/san/j"><span style="color:green;">初中散题库</span></a></li>						
 						<li>|</li>
-						<li style="width:auto"><a href="">初中文档题库</a></li>	
+						<li style="width:auto"><a href="examquest/doc/j"><span style="color:green;">初中文档题库</span></a></li>	
 						<li>|</li>
-						<li style="width:auto"><a href="">初中教学记事</a></li>	
+						<li style="width:auto"><a href="examquest/edunote/j"><span style="color:green;">初中教学记事</span></a></li>	
 						<li>|</li>
-						<li style="width:auto"><a href="">高中散题库</a></li>
+						<li style="width:auto"><a href="examquest/san/s"><span style="color:blue;">高中散题库</span></a></li>
 						<li>|</li>
-						<li style="width:auto"><a href="">高中文档题库</a></li>
+						<li style="width:auto"><a href="examquest/doc/s"><span style="color:blue;">高中文档题库</span></a></li>
 						<li>|</li>
-						<li style="width:auto"><a href="">高中教学记事</a></li>
+						<li style="width:auto"><a href="examquest/edunote/s"><span style="color:blue;">高中教学记事</span></a></li>
 					</ul>
 			</td>						
 		</tr>

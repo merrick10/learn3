@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.merrick.db.BaseHibernateImpl;
-import com.merrick.db.SiteUserDAOImpl;
+import com.merrick.db.SiteUserServeImpl;
 import com.merrick.entity.Siteuser;
 import com.merrick.util.MyAuth;
 
@@ -37,7 +37,7 @@ public class UserControl {
 	private static Logger log = Logger.getLogger(UserControl.class);	
 	
 	@Autowired
-	private SiteUserDAOImpl db;
+	private SiteUserServeImpl db;
 	
 	@Autowired
 	private BaseHibernateImpl bhi;
@@ -99,9 +99,9 @@ public class UserControl {
 		
 
 		log.info("user/list");		//
-//		mdl.addAttribute("user", db.getAllUser());//OK		
+		mdl.addAttribute("user", db.getAllUser());//OK		
 //		mdl.addAttribute("user", bhi.getListBySQL("select * from siteuser"));//OK
-		mdl.addAttribute("user", bhi.getObjectList("select * from siteuser", Siteuser.class));//OK//当然,结果必须是已声明映射的对象,查询所有列
+//		mdl.addAttribute("user", bhi.getObjectList("select * from siteuser", Siteuser.class));//OK//当然,结果必须是已声明映射的对象,查询所有列
 		
 //		return "user/user_list";
 		ModelAndView mav = new ModelAndView();
@@ -159,10 +159,10 @@ public class UserControl {
 		
 		if(codeinsession!=null && rcode != null && !"".equals(rcode) && rcode.equals(codeinsession)){
 			
-			Object obj = bhi.findOneBySql(Siteuser.class, "select * from siteuser where id='"+id+"'");
+			Siteuser u = db.getOneUserFromID(id);
 							
-			if(obj!=null){
-				Siteuser u = (Siteuser) obj;
+			if(u!=null){
+				
 				String correctencpsw = u.getCipher();
 				String psw_user_submit_enc = org.apache.commons.codec.digest.DigestUtils.md5Hex(psw);
 				

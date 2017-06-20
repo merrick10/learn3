@@ -62,6 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 					        <a class="navbar-brand " href=".">首页</a> -->
 <!-- 					    </div>					     -->
 <!-- 					    <div style="margin: 0 auto;text-align: center;"> -->
+
+
 					    	<ul class="nav nav-justified nav-tabs navbar-default" style="">
 					    	
 					    		<li class=""><a  href=".">首页</a></li>
@@ -74,10 +76,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					                    <li class="divider"></li>
 					                    <li><a href="info/list">发布列表</a></li>	
 					                    <li class="divider"></li>
-					                    <li><a href=".">论坛</a></li>				            				                    
+					                    <li><a href="bbs/block">论坛</a></li>				            				                    
 					                </ul>										                
 					    		</li>
-					    		<li><a href=".">财务整理</a></li>					    		
+					    		<li><a href="finance/firstpage">财务整理</a></li>					    		
 					    		<li class="dropdown">
 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">文件管理<b class="caret"></b></a>
 					                <ul class="dropdown-menu">
@@ -91,9 +93,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					                <ul class="dropdown-menu">
 					                    <li><a href="pmail/list">个人邮箱</a></li>					                    
 					                    <li class="divider"></li>
-					                    <li><a href=".">发邮件</a></li>	
+					                    <li><a href="pmail/editmail">发邮件</a></li>	
 					                    <li class="divider"></li>
-					                    <li><a href=".">邮箱设定</a></li>				            				                    
+					                    <li><a href="pmail/mailsetting">邮箱设定</a></li>				            				                    
 					                </ul>										                
 					    		</li>
 					    		<li class="dropdown">
@@ -106,6 +108,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    		</li>
 					    		
 					    	</ul>
+					    	
+					    	
+					    	
+					    	
+					    	
+					    	
+					    	
 <!-- 					    </div>					 -->
 <!-- 					</div> -->
 <!-- 					</div> -->
