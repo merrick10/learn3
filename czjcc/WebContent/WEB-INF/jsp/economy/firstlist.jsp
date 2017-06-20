@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>用户-列表</title>
+<title>财务管理</title>
 <link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
 
 
@@ -20,34 +20,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <fmt:setLocale value="zh_CN"/>
 <div id="mainDiv">
 <BR/>
-<p class="nowloaction">用户管理 &#187 列表</p>
+<p class="nowloaction">财务管理 &#187 消费列表</p>
 
-<form action="user/" method="POST">
+<form action="" method="POST">
 <table class="edit" border="0"  style="margin:auto;" cellpadding="0" cellspacing="0" >
-	<caption><h2 style="color: blue;" contextmenu="" draggable="true">用户-列表</h2></caption>
+	<caption><h2 style="color: blue;" contextmenu="" draggable="true">财务管理-消费列表</h2></caption>
 	<thead  style="background-color: #CCCCCC;">	
 	<tr>
-		<td style="width:15%;font-weight: bold;text-align: center;">NUMBER</td>
-		<td style="width: 20%;font-weight: bold;text-align: center;">ID</td>
-		<td style="width: 65%;font-weight: bold;text-align: center;">名字</td>
+		<td style="width: 15%;font-weight: bold;text-align: center;">NUMBER</td>
+		<td style="width: 20%;font-weight: bold;text-align: center;">日期</td>
+		<td style="width: 30%;font-weight: bold;text-align: center;">事项</td>
+		<td style="width: 35%;font-weight: bold;text-align: center;">金额</td>
 	</tr>
 	</thead>
-<c:forEach items="${user}" var="u" varStatus="num">
-<!-- 	<tr>	 -->
-<%-- 		<td style="width:15%;">${num.index+1}</td> --%>
-<%-- 		<td style="width:20%;">${u[0]}</td> --%>
-<%-- 		<td style="width:65%;">${u[1]}</td> --%>
-<!-- 	</tr> -->
-	
-		<tr>	
-		<td style="width:15%;text-align: right;">${num.index+1}</td>
-		<td style="width:20%;text-align: center;">${u.id}</td>
-		<td style="width:65%;text-align: center;">${u.name}</td>
+
+	<tr>
+		<td style="" colspan="4">To be continued...</td>
 	</tr>
 
-</c:forEach>	
-
-<input type="hidden" id="hd1" value="aaa" />	
 	
 </table>
 
@@ -55,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 
 <br/>
-<c:out value=""></c:out>
+
 <hr/>
 
 <br/>
