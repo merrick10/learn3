@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<thead  style="background-color: #CCCCCC;">	
 	<thead  style="background-color: #CCCCCC;">	
 	<tr>
+
 		<td style="width: 10%;font-weight: bold;text-align: center;">NUMBER</td>
 		<td style="width: 20%;font-weight: bold;text-align: center;">日期</td>
 		<td style="width: 20%;font-weight: bold;text-align: center;">分类</td>
@@ -38,6 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<tr>
 		<td style="" colspan="5">To be continued...</td>
+
 	</tr>	
 
 
