@@ -86,11 +86,11 @@
 	
 	
 
-<bean id="myvalidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">  
-        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>          
-<!--         如果不加默认到 使用classpath下的 ValidationMessages.properties, 字段校验国际化消息采用本webapp的国际化资源文件  -->
-        <property name="validationMessageSource" ref="messageSource"/>  
-</bean>  
+	<bean id="myvalidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">  
+	        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>          
+	<!--         如果不加默认到 使用classpath下的 ValidationMessages.properties, 字段校验国际化消息采用本webapp的国际化资源文件  -->
+	        <property name="validationMessageSource" ref="messageSource"/>  
+	</bean>  
 	
       
 </beans>

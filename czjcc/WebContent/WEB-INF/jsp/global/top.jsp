@@ -131,31 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 				</nav> -->
 			
 						
-<!-- 					<ul  style="" class="toppage" > -->
-<!-- 						<li style="width:auto;"><a href=".">首页</a></li>						 -->
-<!-- 						<li>|</li>					 -->
-<!-- 						<li style="width:auto;"><a href="user/edit">用户编辑</a></li>						 -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="info/edit">发布编辑</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="pmail/setting">E-mail设定</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="fileop/upload">文件上传</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li  style="width:auto"><a href="user/listall">用户列表</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="info/list">发布列表</a></li> -->
-<!-- 						<li>|</li>						 -->
-<!-- 						<li style="width:auto"><a href="fileop/download">文件下载</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="pmail/list">个人邮箱</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="forum/catalog">论坛</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="education/new">教学整理</a></li> -->
-<!-- 						<li>|</li> -->
-<!-- 						<li style="width:auto"><a href="">财务整理</a></li> -->
-<!-- 					</ul> -->
+
 			</td>						
 		</tr>
 
