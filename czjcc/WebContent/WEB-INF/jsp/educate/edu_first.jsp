@@ -29,7 +29,7 @@ A
 <hr/>
 B
 <hr/>
-
+<span style="color:blue;font-size:22px;">总注册人数：<c:out value="${usercount}" /></span>
 
 </div>
 

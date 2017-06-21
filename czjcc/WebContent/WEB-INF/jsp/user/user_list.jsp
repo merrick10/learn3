@@ -27,22 +27,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div style="margin: auto;width: 1200px;" class="panel panel-default">
 <div class="panel-body">
-<div class="col-lg-6" style="">
-
-	<div class="input-group">
-     	 	
-		<span class="input-group-addon" style=" ">ID</span>
-     	<input type="text" class="form-control"  placeholder="此处输入ID"  />     		
-		<span class="input-group-addon" style=" ">名字</span>
-		<input type="text" class="form-control"  placeholder="此处输入名字"  />
-		<span class="input-group-btn">						
-			<input type="button" class=" btn btn-primary"  value="查询"  />						
-		</span>   
-		<span class="input-group-btn">						
-			<input type="button" class=" btn btn-primary btn-warning"  value="创建用户" onclick="createuser()"  />						
-		</span>  
-    </div>
-</div>
+	<div class="col-lg-6" style="">
+	
+		<div class="input-group">
+	     	 	
+			<span class="input-group-addon" style=" ">ID</span>
+	     	<input type="text" class="form-control"  placeholder="此处输入ID"  />     		
+			<span class="input-group-addon" style=" ">名字</span>
+			<input type="text" class="form-control"  placeholder="此处输入名字"  />
+			<span class="input-group-btn">						
+				<input type="button" class=" btn btn-primary"  value="查询"  />						
+			</span>   
+			<span class="input-group-btn">						
+				<input type="button" class=" btn btn-primary btn-warning"  value="创建用户" onclick="createuser()"  />						
+			</span>  
+	    </div>
+	</div>
 <br/>
 <hr/>
 <form action="user/" method="POST">
