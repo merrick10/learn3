@@ -9,9 +9,10 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 
-@Component
+@Repository
 public class DBCP2TestImpl {
 	
 	private static Logger log =  Logger.getLogger(DBCP2TestImpl.class.getName());

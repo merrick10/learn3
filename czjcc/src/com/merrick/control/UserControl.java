@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.merrick.db.BaseHibernateImpl;
+import com.merrick.db.SiteUserServe;
 import com.merrick.db.SiteUserServeImpl;
 import com.merrick.entity.Siteuser;
 import com.merrick.util.MyAuth;
@@ -37,7 +38,7 @@ public class UserControl {
 	private static Logger log = Logger.getLogger(UserControl.class);	
 	
 	@Autowired
-	private SiteUserServeImpl db;
+	private SiteUserServe db;
 	
 	@Autowired
 	private BaseHibernateImpl bhi;

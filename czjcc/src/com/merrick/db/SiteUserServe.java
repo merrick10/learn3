@@ -1,6 +1,9 @@
 package com.merrick.db;
 
+import java.util.List;
+
 import com.merrick.entity.Siteuser;
+
 
 public interface SiteUserServe {
 
@@ -9,5 +12,7 @@ public interface SiteUserServe {
 	public void saveOneUser(Siteuser u);
 	
 	public void deleteOneUserFromID(String ID);
+	
+	public List getAllUser();
 	
 }
