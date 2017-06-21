@@ -58,21 +58,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<tr>
 			<td style="line-height: 20px;background-color: rgba(247, 247, 247, 1);">				
-					<ul  style="" class="toppage" >
-						<li style="width:auto;"><a href=".">首页</a></li>						
-						<li>|</li>					
-						<li style="width:auto;"><a href="examquest/san/j"><span style="color:green;">初中散题库</span></a></li>						
-						<li>|</li>
-						<li style="width:auto"><a href="examquest/doc/j"><span style="color:green;">初中文档题库</span></a></li>	
-						<li>|</li>
-						<li style="width:auto"><a href="examquest/edunote/j"><span style="color:green;">初中教学记事</span></a></li>	
-						<li>|</li>
-						<li style="width:auto"><a href="examquest/san/s"><span style="color:navy;">高中散题库</span></a></li>
-						<li>|</li>
-						<li style="width:auto"><a href="examquest/doc/s"><span style="color:navy;">高中文档题库</span></a></li>
-						<li>|</li>
-						<li style="width:auto"><a href="examquest/edunote/s"><span style="color:navy;">高中教学记事</span></a></li>
-					</ul>
+<!-- 					<ul  style="" class="toppage" > -->
+<!-- 						<li style="width:auto;"><a href=".">首页</a></li>						 -->
+<!-- 						<li>|</li>					 -->
+<!-- 						<li style="width:auto;"><a href="examquest/san/j"><span style="color:green;">初中散题库</span></a></li>						 -->
+<!-- 						<li>|</li> -->
+<!-- 						<li style="width:auto"><a href="examquest/doc/j"><span style="color:green;">初中文档题库</span></a></li>	 -->
+<!-- 						<li>|</li> -->
+<!-- 						<li style="width:auto"><a href="examquest/edunote/j"><span style="color:green;">初中教学记事</span></a></li>	 -->
+<!-- 						<li>|</li> -->
+<!-- 						<li style="width:auto"><a href="examquest/san/s"><span style="color:navy;">高中散题库</span></a></li> -->
+<!-- 						<li>|</li> -->
+<!-- 						<li style="width:auto"><a href="examquest/doc/s"><span style="color:navy;">高中文档题库</span></a></li> -->
+<!-- 						<li>|</li> -->
+<!-- 						<li style="width:auto"><a href="examquest/edunote/s"><span style="color:navy;">高中教学记事</span></a></li> -->
+<!-- 					</ul> -->
+					
+			    	<ul class="nav nav-justified nav-tabs navbar-default" style="">
+				    	
+						<li ><a href=".">首页</a></li>						
+			
+						<li ><a href="examquest/san/j"><span style="color:green;">初中散题库</span></a></li>						
+			
+						<li ><a href="examquest/doc/j"><span style="color:green;">初中文档题库</span></a></li>	
+					
+						<li ><a href="examquest/edunote/j"><span style="color:green;">初中教学记事</span></a></li>	
+					
+						<li ><a href="examquest/san/s"><span style="color:navy;">高中散题库</span></a></li>
+					
+						<li ><a href="examquest/doc/s"><span style="color:navy;">高中文档题库</span></a></li>
+						
+						<li ><a href="examquest/edunote/s"><span style="color:navy;">高中教学记事</span></a></li>
+				    		
+			    	</ul>
 			</td>						
 		</tr>
 

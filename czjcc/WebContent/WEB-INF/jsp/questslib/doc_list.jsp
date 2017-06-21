@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title><c:out value="${gradeinfo}" />文档题库-列表</title>
 <link type="text/css" rel="stylesheet" href="css/global.css?v=2017">
-
+<link type="text/css" rel="stylesheet" href="css/bootstrap3/bootstrap.css"> 
 
 </head>
 <body>
