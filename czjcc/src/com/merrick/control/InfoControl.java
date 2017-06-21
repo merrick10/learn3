@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.merrick.db.JDBCTemplateTestImpl;
 import com.merrick.db.TonggaoImpl;
 import com.merrick.entity.Tonggao;
 import com.merrick.util.MyAuth;
@@ -39,9 +40,15 @@ public class InfoControl {
 	@Autowired
 	private TonggaoImpl ti ;
 	
+	@Autowired
+	private JDBCTemplateTestImpl jtpi;
+	
 	@RequestMapping(path="/list",method={RequestMethod.GET})
 	public String listpage(Model mdl){
 		
+		int n = jtpi.getpubinfocount();
+		
+		mdl.addAttribute("totalcnt", n);
 		
 		return "info/info_list.page";		
 	} 

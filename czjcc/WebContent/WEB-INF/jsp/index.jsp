@@ -125,13 +125,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </table>
 
 
-
-
 <hr/>
 <hr/>
 <a href="test1/top">INDEX</a>
 <hr/>
 
+<ul class="list-group" style="">
+       
+<c:forEach items="${lst}" var="infos" varStatus="num">
+	<li class="list-group-item">${num.index+1},${infos.title},${infos.pubday},${infos.puber },<br/>${infos.content }</li>
+</c:forEach>
+</ul>
+
+
+<hr/>
 
 <script type="text/javascript" src="jslib/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="jslib/bootstrap3/bootstrap.js"></script>

@@ -18,8 +18,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="mainDiv">
 <BR/>
 <p class="nowloaction">消息发布 &#187 列表</p>
+<hr/>
+<span>发布总数：<c:out value="${totalcnt}" /></span>
 <table class="edit table-bordered table-striped " border="0" style="margin:auto;" cellpadding="0" cellspacing="0" id="datatable">
-	<caption><h2 style="color: blue;" contextmenu="" draggable="true">消息发布-列表</h2></caption>
+	<caption><h2 style="color: blue;font-size: 13px;" contextmenu="" draggable="true" >消息发布-列表</h2></caption>
 	<thead style="background-color: #CCCCCC;">	
 	<tr>
 		<td style="width:10%;font-weight: bold;text-align: center;">NUM</td>
