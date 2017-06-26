@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*"  contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,7 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<BR/>
 		<p class="nowloaction">用户管理 &#187 编辑</p>
 		<BR/>
-		<form action="user/saveuser" method="POST">
+<!-- 		<form action="user/saveuser" method="POST"> -->
+		
+		<sf:form  action="user/saveuser" method="post" modelAttribute="userinfo">
 		
 		<div style="margin: auto;width: 800px;" class="panel panel-default">
 			<div class="panel-heading">
@@ -40,11 +42,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div style="width:50px;">ID</div>
 					</span>
 					<input type="text" class="form-control" placeholder="请输入ID"  maxlength="20"  name="id"  />
+					<sf:errors path="id"  cssStyle="color:red;font-size:12px;background-color:white;" cssClass="input-group-addon"/>
 				</div>
 				<br/>
 				<div class="input-group">
 					<span class="input-group-addon"><div style="width:50px;">名字</div></span>
 					<input type="text" class="form-control" placeholder="请输入姓名"  maxlength="50"  name="name" />
+					<sf:errors path="name"  cssStyle="color:red;font-size:12px;background-color:white;"  cssClass="input-group-addon"/>
 				</div>
 				<br/>
 				<div class="input-group">
@@ -77,12 +81,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 <!-- 					<td colspan="2" style="text-align: right;padding-right: 10PX;"><input type="button"  class="operatebtn" value="SUBMIT" onclick="save()"/></td> -->
 <!-- 				</tr> -->
-<!-- 			</table> -->
-			
-			
-			
-			
-		</form>
+<!-- 			</table> -->			
+<!-- 		</form> -->
+		
+		</sf:form>
 		<br/>
 		<hr/>
 		</div>

@@ -100,7 +100,12 @@
 		<property name="initialSize" value="5" />	
 		<property name="MaxTotal" value="100" />	
 		<property name="maxIdle" value="2" />
+		<property name="minIdle" value="1"/>
 		<property name="MaxWaitMillis" value="6000" />		
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dbcp2datasource" />
 	</bean>
 	
       

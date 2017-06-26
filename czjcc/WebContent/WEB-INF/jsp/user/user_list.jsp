@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="jslib/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	function createuser(){
-		window.top.location='edit';
+		window.top.location='<%=basePath%>/user/edit';
 	}
 
 </script>

@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ import com.merrick.db.SiteUserServe;
 import com.merrick.db.SiteUserServeImpl;
 import com.merrick.entity.Siteuser;
 import com.merrick.util.MyAuth;
+import com.merrick.validators.SiteuserValidator;
 
 
 
@@ -43,14 +45,17 @@ public class UserControl {
 	@Autowired
 	private BaseHibernateImpl bhi;
 	
+	@Autowired
+	private SiteuserValidator uv;
+	
 //	@InitBinder
 //	public void initBinder(DataBinder bd){
 //		bd.replaceValidators(new SiteuserValidator());
 //	}
 	
 	
-	@MyAuth(level=0)
-	@RequestMapping(path="/edit",method={RequestMethod.GET})
+//	@MyAuth(level=0)
+	@RequestMapping(path="/edit",method={RequestMethod.GET,RequestMethod.POST})
 	public String editonesiteuser(Model mdl,HttpServletRequest request, HttpServletResponse response){		
 		
 		log.info("user/edit");		//
@@ -58,13 +63,18 @@ public class UserControl {
 	}
 	
 	
-	@MyAuth(level=0)
+//	@MyAuth(level=0)
 	@RequestMapping(path="/saveuser",method={RequestMethod.POST})
-	public String saveonesiteuser(Siteuser user){		
+	public String saveonesiteuser(@ModelAttribute("userinfo")  Siteuser user, Errors err){		
 		
 		log.info("ID: "+user.getId());//
 		log.info("NAME: "+user.getName());
-		log.info("INTRO: "+user.getIntro());		
+		log.info("INTRO: "+user.getIntro());	
+		
+		uv.validate(user, err);
+		if(err.hasErrors()){
+			return "user/user_edit.page";
+		}
 		
 //		if(errs.hasErrors()){
 //			return "/user/user_edit";
@@ -94,7 +104,7 @@ public class UserControl {
 	 * @param mdl
 	 * @return
 	 */
-	@MyAuth(level=0)
+//	@MyAuth(level=0)
 	@RequestMapping(path="/listall",method={RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView listallsiteusers(Model mdl){//
 		
