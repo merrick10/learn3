@@ -108,5 +108,9 @@
 		<property name="dataSource" ref="dbcp2datasource" />
 	</bean>
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600"/>  
+      	<property name="maxInMemorySize" value="4096"/> 
+	</bean><!-- 使用spring框架API上传文件必需的配置，不然会出现类型转换错误RequestFacade  -->
       
 </beans>

@@ -37,10 +37,10 @@ public class TonggaoValidator implements Validator {
 			errs.rejectValue("content", "info.content.null");
 		}
 		
-		if(t.getTitle().length()>50){
+		if(t.getTitle().length()>90){
 			errs.rejectValue("title", "info.title.toolong");
 		}
-		if(t.getContent().length()>20){
+		if(t.getContent().length()>10000000){//16777216
 			errs.rejectValue("content", "info.content.toolong");
 		}
 		
