@@ -109,11 +109,11 @@
 		<property name="MaxWaitMillis" value="6000" />		
 	</bean>
 	
-	<!-- 	事务管理 -->
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<!-- 	事务管理 ; bean的id不可修改-->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dbcp2datasource" />
 	</bean>
-
+	<tx:annotation-driven/>
 	
 	<!-- 	文件上传限制 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

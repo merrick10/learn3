@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.merrick.entity.Tonggao;
 
@@ -30,6 +31,7 @@ public class DAOJdbcTemplate {
 		this.jdbctemplate = new JdbcTemplate(dbcp2datasource);
 	} 
 	
+	@Transactional(rollbackFor=Exception.class)
 	public boolean saveOneTonggao(Tonggao obj){//信息发布，保存，insert
 		
 		int returnvalue = this.jdbctemplate.update("insert into tonggao(type2,title,pubday,content,ispub,optime,puber)values(?,?,?,?,?,?,?)",
