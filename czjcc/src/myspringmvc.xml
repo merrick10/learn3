@@ -19,15 +19,19 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
        "> 
 	
+	<!-- 	Bean扫描配置 -->
 	<context:component-scan  base-package="com.merrick.control,com.merrick.validators,com.merrick.db" />
 
+	<!-- 	注解式校验器声明 -->
 	<mvc:annotation-driven validator="myvalidator" />
 
+	<!-- 	MVC转发映射 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />	
 	</bean>
 	
+	<!-- 	数据库HibernateSession来源 -->
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"   />
 	</bean>
@@ -37,18 +41,17 @@
 <!-- 		<property name="sessionFactory" ref="mySessionFactory"></property> -->
 <!-- 	</bean> -->
 	
+	<!-- 	DAO Bean -->
 	<bean id="myuserdao" class="com.merrick.db.SiteUserServeImpl">
 		<property name="sessionFactory" ref="mySessionFactory"/>
-	</bean>
-	
+	</bean>	
 	<bean id="mybasedao" class="com.merrick.db.BaseHibernateImpl" >
 		<property name="sessionFactory" ref="mySessionFactory"/>
-	</bean>
-	
+	</bean>	
 	<bean id="myinfoimpl" class="com.merrick.db.TonggaoImpl" />	
 
 	
-	
+	<!-- 	Layout -->
 	<bean id="tilesconfig"  class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
@@ -57,23 +60,24 @@
 		</property>
 	</bean>
 	
+	<!-- 	Layout -->
 	<bean id="tilesviewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="order" value="1" />
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
 	</bean>
 	
+	<!-- 	国际化资源 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="message" />	
 	</bean>
 	
+	<!-- 	拦截器 -->
 	<mvc:interceptors>
-		<bean class="com.merrick.servlet.BasicInterceptor" />
-		
+		<bean class="com.merrick.servlet.BasicInterceptor" />		
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<bean class="com.merrick.servlet.MyAuthInterceptor"/>
-		</mvc:interceptor>
-		
+		</mvc:interceptor>		
 		<mvc:interceptor>
 			<mvc:mapping path="/user/edit"/>
 			<bean class="com.merrick.servlet.UserInterceptor" />
@@ -85,13 +89,14 @@
 	</mvc:interceptors>	
 	
 	
-
+	<!-- 	校验器 -->
 	<bean id="myvalidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">  
 	        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>          
 	<!--         如果不加默认到 使用classpath下的 ValidationMessages.properties, 字段校验国际化消息采用本webapp的国际化资源文件  -->
 	        <property name="validationMessageSource" ref="messageSource"/>  
 	</bean>  
 	
+	<!-- 	dbcp2数据源 -->
 	<bean id="dbcp2datasource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/jpcorps" />
@@ -104,10 +109,13 @@
 		<property name="MaxWaitMillis" value="6000" />		
 	</bean>
 	
+	<!-- 	事务管理 -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dbcp2datasource" />
 	</bean>
+
 	
+	<!-- 	文件上传限制 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="104857600"/>  
       	<property name="maxInMemorySize" value="4096"/> 

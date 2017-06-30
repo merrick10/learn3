@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div  class="panel-body">		
 		
 <!-- 		<form action="user/saveuser" method="POST"> -->
-		<sf:form action="info/submit" method="post" modelAttribute="commoninfo">		
+		<sf:form action="info/submit" method="post" modelAttribute="commoninfo"  >		
 		
 			<div class="input-group">
 				<span class="input-group-addon"><div style="width:50px;">主题</div></span>

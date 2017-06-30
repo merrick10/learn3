@@ -18,8 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="mainDiv">
 <BR/>
 <p class="nowloaction">消息发布 &#187 列表</p>
-<hr/>
 
+<br/>
 <div style="margin: auto;width: 1200px;" class="panel panel-default" >
 	<div  class="panel-body">
 		<div class="col-lg-6" style="">
@@ -27,11 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="input-group">
 	     	 	
 			<span class="input-group-addon" style=" ">date</span>
-	     	<input type="text" class="form-control"  placeholder="此处输入ID"  />     		
+	     	<input type="text" class="form-control"  placeholder="此处输入ID"  id="tonggaoid"/>     		
 			<span class="input-group-addon" style=" ">title</span>
-			<input type="text" class="form-control"  placeholder="此处输入名字"  />
+			<input type="text" class="form-control"  placeholder="此处输入名字"  id="tonggaotitle"/>
 			<span class="input-group-btn">						
-				<input type="button" class=" btn btn-primary"  value="查询"  />						
+				<input type="button" class=" btn btn-primary"  value="查询" onclick="query()" />						
 			</span>   
 			<span class="input-group-btn">						
 				<input type="button" class=" btn btn-primary btn-warning"  value="发布新信息" onclick="pubnew()"  />						
@@ -39,16 +39,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </div>
 		</div>
 		<span>发布总数(通过JdbcTemplate查询)：<c:out value="${totalcnt}" /></span>
+		<br/>
+		<hr/>
 		<table class="edit table-bordered table-striped " border="0" style="margin-left:20px;" cellpadding="0" cellspacing="0" id="datatable">
-			<caption><h2 style="color: blue;font-size: 13px;" contextmenu="" draggable="true" >消息发布-列表</h2></caption>
-			<thead style="background-color: #CCCCCC;">	
-			<tr>
-				<td style="width:10%;font-weight: bold;text-align: center;">NUM</td>
-				<td style="width: 40%;font-weight: bold;text-align: center;">TITLE</td>
-				<td style="width: 25%;font-weight: bold;text-align: center;">DATE</td>
-				<td style="width: 25%;font-weight: bold;text-align: center;">USER</td>
-			</tr>
-			</thead>	
+
+	
 		</table>
 	
 	</div>
@@ -58,8 +53,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </div>
-<br/>
 
+<hr/>
 
 
 
@@ -68,15 +63,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function pubnew(){
 		window.top.location='<%=basePath%>/info/edit';
 	}
+	
+	function query(){
+		
+		$.ajax({
+			url:'info/querybyparam',
+			dataType:'json',
+			type:'post',
+			cache:false,
+			data:{'pubday':$('#tonggaoid').val(),'title':$('#tonggaotitle').val()},
+			success:function(data){
+							
+				var html = '';
+				
+				$('#datatable').empty();
+				$('#datatable').append('\
+						<thead style="background-color: #CCCCCC;">	\
+						<tr><td style="width:10%;font-weight: bold;text-align: center;">NUM</td>	\
+							<td style="width: 40%;font-weight: bold;text-align: center;">TITLE</td>	\
+							<td style="width: 25%;font-weight: bold;text-align: center;">DATE</td>	\
+							<td style="width: 25%;font-weight: bold;text-align: center;">USER</td></tr></thead>	\
+							');
+				
+				
+				$.each(data,function(index,elem){					
+					html += '<tr>';
+					html +='<td style="width:10%;font-weight: bold;text-align: center;">'+ (index+1) +'</td>';
+					html += '<td style="width: 40%;text-align: center;">'+ elem.title +'</td>';
+					html += '<td style="width: 25%;text-align: center;">'+ elem.pubday+'</td>';
+					html += '<td style="width: 25%;text-align: center;">'+ elem.name +'</td>';
+					html += '</tr>';					
+				});
+				$('#datatable').append(html);
+			},
+			error:function(XMLHttpRequest){
+				alert(XMLHttpRequest.responseText);
+			}
+			
+		});
+		
+	}
 
 </script>
-<script type="text/javascript">
-	
+<script type="text/javascript">	
 
-	$(function(){
-		
-		
-		
+	$(function(){	
+		/*
 		$.ajax({
 			url:"info/getlistjson",
 			dataType:"json",
@@ -102,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			
 		});
-		
+		*/
 		
 	});
 

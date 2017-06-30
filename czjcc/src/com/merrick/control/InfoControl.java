@@ -24,6 +24,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,8 +42,14 @@ import com.merrick.util.MyAuth;
 import com.merrick.validators.TonggaoValidator;
 
 import net.sf.json.JSON;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+
+/**
+ * @author liumiao
+ *
+ */
 @Controller
 @RequestMapping("/info")
 public class InfoControl {
@@ -73,12 +80,15 @@ public class InfoControl {
 	
 	/**
 	 * ajax查询信息列表
+	 * * 在使用@RequestMapping后，返回值通常解析为跳转路径，
+	 * 加上@ResponseBody后返回结果不会被解析为跳转路径，而是直接写入HTTP response body中
 	 * @param datestr
 	 * @param response
 	 */
 	@ResponseBody
 	@RequestMapping(path="/getlistjson",method={RequestMethod.POST})
 	public void getdata_json(@RequestParam(name="optime") String datestr, HttpServletResponse response){
+		
 		try {
 			log.info("getlistjson,date param: " + datestr);
 			
@@ -88,7 +98,6 @@ public class InfoControl {
 			mp.put("listdata", infolst);
 			JSON res = JSONObject.fromObject(mp);
 			String jsstr = res.toString();
-			//HttpServletResponse resp = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getResponse();
 		
 			response.getWriter().print(jsstr);
 		} catch (IOException e) {
@@ -114,12 +123,12 @@ public class InfoControl {
 	 * 保存
 	 * @param mdl
 	 * @param info
-	 * @param errs
+	 * @param errs  
 	 * @return
 	 */
 //	@MyAuth(level=0)
 	@RequestMapping(path="/submit",method={RequestMethod.POST})
-	public String saveoneinfo(Model mdl, @ModelAttribute("commoninfo") Tonggao info, Errors errs){
+	public String saveoneinfo(Model mdl,  @ModelAttribute("commoninfo") Tonggao info, Errors errs){
 		
 		tv.validate(info, errs);
 		if(errs.hasErrors()){
@@ -136,8 +145,14 @@ public class InfoControl {
 		return "redirect:/info/list";		
 	} 
 	
+	
+	/**
+	 * //kindeditor上传图片保存
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(path="/uploadpic",method={RequestMethod.POST})
-	public void uploadpicforkindeditor(HttpServletRequest request, HttpServletResponse response){//kindeditor上传图片保存
+	public void uploadpicforkindeditor(HttpServletRequest request, HttpServletResponse response){
 			
 		String ffolder = "e:/testupload2/";
 		String filename = "";//原始文件名
@@ -168,11 +183,8 @@ public class InfoControl {
 			log.info("servercontextpath: "+servicepath);
 			String furl = servicepath+"info/viewpic/"+ filesuffix +"/"+newname;
 			log.info("File URL: "+furl);
-			
-//			JSONObject obj = new JSONObject();
-//			obj.put("error", 0);//success
-//			obj.put("url",furl);			
-			response.getOutputStream().write(msgforkdeditor(0,furl,"").getBytes("utf-8"));
+		
+			response.getOutputStream().write(msgforkdeditor(0,furl,"").getBytes("utf-8"));//SUCCESS
 			
 		} catch (IOException e) {
 			log.error(e.toString());
@@ -198,7 +210,15 @@ public class InfoControl {
 		}
 	}
 	
-	public  String msgforkdeditor(int iserror, String picurl, String msg ){//kindeditor需要的返回消息，0：成功，1：错误
+	
+	/**
+	 * //kindeditor需要的返回消息，0：成功，1：错误
+	 * @param iserror
+	 * @param picurl
+	 * @param msg
+	 * @return
+	 */
+	public  String msgforkdeditor(int iserror, String picurl, String msg ){
 		JSONObject obj = new JSONObject();
 		obj.put("error", iserror);
 		obj.put("url",picurl);
@@ -206,8 +226,17 @@ public class InfoControl {
 		return obj.toString();
 	}
 	
+	
+	/**
+	 * //浏览图片
+	 * @param picsuffix
+	 * @param fname
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(path="/viewpic/{filesuffix}/{picrealfilename}",method={RequestMethod.POST,RequestMethod.GET})
-	public void viewpic( @PathVariable(value="filesuffix") String picsuffix, @PathVariable(value="picrealfilename") String fname, HttpServletRequest request, HttpServletResponse response){
+	public void viewpic( @PathVariable(value="filesuffix") String picsuffix, @PathVariable(value="picrealfilename") String fname, 
+			HttpServletRequest request, HttpServletResponse response){
 		
 		InputStream is = null;
 		OutputStream os = null;
@@ -249,11 +278,33 @@ public class InfoControl {
 			} catch (IOException e) {
 				log.error(e.toString());
 			}
-		}
+		}		
+	}
+	
+	@ResponseBody
+	@RequestMapping(path="/querybyparam",method={RequestMethod.POST})
+	public void getlistbyparam(@RequestParam(name="pubday") String pubday, @RequestParam(name="title")  String title, 
+			HttpServletRequest request, HttpServletResponse response){		
 		
-		
+		try {
+			
+	//		log.info("pubday: "+ pubday + ", title: "+ title);
+			
+			List lst = commonimpl.getInfoList(pubday,title);
+			
+	//		log.info(lst);			
+			
+			JSONArray jsn = JSONArray.fromObject(lst);
+			
+			response.getWriter().print(jsn);			
+			return;
+			
+		} catch (IOException e) {
+			log.info(e.toString());
+		}		
 		
 	}
+	
 	
 
 }
