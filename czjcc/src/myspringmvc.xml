@@ -20,7 +20,7 @@
        "> 
 	
 	<!-- 	Bean扫描配置 -->
-	<context:component-scan  base-package="com.merrick.control,com.merrick.validators,com.merrick.db" />
+	<context:component-scan  base-package="com.merrick.control,com.merrick.validators,com.merrick.db,com.merrick.util" />
 
 	<!-- 	注解式校验器声明 -->
 	<mvc:annotation-driven validator="myvalidator" />
@@ -119,6 +119,8 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="104857600"/>  
       	<property name="maxInMemorySize" value="4096"/> 
+      	<property name="defaultEncoding" value="UTF-8"/>
+      	<property name="uploadTempDir" value="upload/temp"/>
 	</bean><!-- 使用spring框架API上传文件必需的配置，不然会出现类型转换错误RequestFacade  -->
       
 </beans>

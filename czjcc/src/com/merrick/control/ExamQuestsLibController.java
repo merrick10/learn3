@@ -1,15 +1,28 @@
 package com.merrick.control;
 
+import java.io.File;
+import java.util.Iterator;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.support.RequestContext;
+
+import com.merrick.util.SpringUtil;
 
 @Controller
-@RequestMapping(path="/examquest")
+@RequestMapping("/examquest")
 public class ExamQuestsLibController {
 	private static Logger log =  Logger.getLogger(ExamQuestsLibController.class.getName());
 	
@@ -18,27 +31,35 @@ public class ExamQuestsLibController {
 		
 		log.info(req.getRequestURI());
 		
+		RequestContext rc = new RequestContext(req);//
+			
 		if("j".equals(grade)){
-			mdl.addAttribute("gradeinfo", "初中");
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.junior"));//国际化
+			mdl.addAttribute("gradelevel", grade);
 		}else if("s".equals(grade)){
-			mdl.addAttribute("gradeinfo", "高中");
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.senior"));
+			mdl.addAttribute("gradelevel", grade);
 		}else{
 			mdl.addAttribute("errinfo1",  "路径错误，所访问页面不存在!");
 			return "error/error.page2";
 		}
+		log.info("I18N applicationContext test: "+SpringUtil.getApplicationContext().getMessage("grade.junior", null, null));
 		
 		
 		return "questslib/san_list.page2";
 	}
 	
-	@RequestMapping(path="/doc/{gradelabel}")
+	@RequestMapping(path="/doc/{gradelabel}",method={RequestMethod.POST,RequestMethod.GET})
 	public String DocFileQuestList(@PathVariable(value="gradelabel") String grade, HttpServletRequest req, Model mdl){
 		
 		log.info(req.getRequestURI());
+		RequestContext rc = new RequestContext(req);
 		if("j".equals(grade)){
-			mdl.addAttribute("gradeinfo", "初中");
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.junior"));
+			mdl.addAttribute("gradelevel", grade);
 		}else if("s".equals(grade)){
-			mdl.addAttribute("gradeinfo", "高中");
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.senior"));
+			mdl.addAttribute("gradelevel", grade);
 		}else{
 			mdl.addAttribute("errinfo1",  "路径错误，所访问页面不存在!");
 			return "error/error.page2";
@@ -51,10 +72,13 @@ public class ExamQuestsLibController {
 	public String EducationNotesList(@PathVariable(value="gradelabel") String grade, HttpServletRequest req, Model mdl){
 		
 		log.info(req.getRequestURI());
+		RequestContext rc = new RequestContext(req);
 		if("j".equals(grade)){
-			mdl.addAttribute("gradeinfo", "初中");
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.junior"));
+			mdl.addAttribute("gradelevel", grade);
 		}else if("s".equals(grade)){
-			mdl.addAttribute("gradeinfo", "高中");
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.senior"));
+			mdl.addAttribute("gradelevel", grade);
 		}else{
 			mdl.addAttribute("errinfo1",  "路径错误，所访问页面不存在!");
 			return "error/error.page2";
@@ -63,8 +87,62 @@ public class ExamQuestsLibController {
 		return "questslib/edunote_list.page2";
 	}
 	
+	@RequestMapping(path="/newupload/{gradelabel}")
+	public String newDocUpload(@PathVariable(value="gradelabel") String grade, HttpServletRequest req, Model mdl){	
+		
+		RequestContext rc = new RequestContext(req);
+		if("j".equals(grade)){
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.junior"));
+			mdl.addAttribute("gradelevel", grade);
+		}else if("s".equals(grade)){
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.senior"));
+			mdl.addAttribute("gradelevel", grade);
+		}else{
+			mdl.addAttribute("errinfo1",  "路径错误，所访问页面不存在!");
+			return "error/error.page2";
+		}		
+		
+		return "questslib/doc_upedit.page2";
+	}
 	
-	
-	
+	@RequestMapping(path="/upfile",method={RequestMethod.POST})
+	public String saveUploadFiles(@RequestParam(value="gradelevel") String grade, 
+			HttpServletRequest req, Model mdl, HttpServletResponse resp){
+		//题文档上传
+		log.info(req.getRequestURI());
+		req.setAttribute("turnpath", "/examquest/doc/"+grade);//提示页面之后跳转地址		
+		
+		try {
+			req.setAttribute("info", "No upload file!");//提示信息		
+			CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(req.getSession().getServletContext());
+			if(multipartResolver.isMultipart(req)){
+				MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)req;
+				Iterator<String> iter = multiRequest.getFileNames();
+				while(iter.hasNext()){
+			
+					MultipartFile file = multiRequest.getFile(iter.next());
+					if(file != null){
+						String myFileName = file.getOriginalFilename();
+						if(myFileName.trim() !=""){
+							log.info(myFileName);
+							String newfilepath = "d:/ex/uploadtest1/" + UUID.randomUUID().toString() + "_" + myFileName;
+							File newlocalfile = new File(newfilepath);
+							file.transferTo(newlocalfile);		
+							req.setAttribute("info", "Upload successfully!");//提示信息
+						}						
+					}					
+				}				
+			}
+			
+			
+		} catch (Exception e) {
+			log.error(e.toString());
+			req.setAttribute("info", "Upload failed!");//提示信息
+		}
+		
+		//return "redirect:/examquest/doc/"+grade;
+		return "global/commoninfo.page2";
+		
+	}
 
 }

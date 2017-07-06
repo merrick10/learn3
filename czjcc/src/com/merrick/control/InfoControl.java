@@ -281,6 +281,13 @@ public class InfoControl {
 		}		
 	}
 	
+	/**
+	 * ajax查询获取json字符串
+	 * @param pubday
+	 * @param title
+	 * @param request
+	 * @param response
+	 */
 	@ResponseBody
 	@RequestMapping(path="/querybyparam",method={RequestMethod.POST})
 	public void getlistbyparam(@RequestParam(name="pubday") String pubday, @RequestParam(name="title")  String title, 

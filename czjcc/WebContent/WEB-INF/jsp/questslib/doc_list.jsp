@@ -21,7 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="mainDiv">
 <BR/>
 <p class="nowloaction"><c:out value="${gradeinfo}" />文档题库 &#187 列表</p>
-
+<br/>
+<div style="margin: auto;width: 1200px;" class="panel panel-default" >
+<div  class="panel-body">
 <form action="user/" method="POST">
 <table class="edit" border="0"  style="margin:auto;" cellpadding="0" cellspacing="0" >
 	<caption><h2 style="color: menutext;" contextmenu="" draggable="true"><c:out value="${gradeinfo}" />文档题库-列表</h2></caption>
@@ -53,13 +55,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 
 <br/>
-<c:out value=""></c:out>
+<input type="button" value="上传新文档" onclick="upnew()" class="btn btn-primary  btn-sm "/>
+</div>
+</div>
 <hr/>
-
+<input type="hidden" id="gradeflag" value="${gradelevel}" />
 <br/>
 </div>
 <script type="text/javascript" src="jslib/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	function upnew(){
+		window.top.location='<%=basePath%>/examquest/newupload/'+ $('#gradeflag').val();
+	}
 
+</script>
 </body>
 
 </html>

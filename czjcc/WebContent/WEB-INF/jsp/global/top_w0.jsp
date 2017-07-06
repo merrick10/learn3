@@ -76,7 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 			    	<ul class="nav nav-justified nav-tabs navbar-default" style="">
 				    	
-						<li ><a href=".">首页</a></li>						
+						<li ><a href=".">首页</a></li>		
+						
+						<li ><a href="education/new">教学整理首页</a></li>				
 			
 						<li ><a href="examquest/san/j"><span style="color:green;">初中散题库</span></a></li>						
 			
