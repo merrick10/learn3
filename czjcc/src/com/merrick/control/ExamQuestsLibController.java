@@ -1,6 +1,9 @@
 package com.merrick.control;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.UUID;
 
@@ -10,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.support.RequestContext;
 
@@ -107,19 +112,55 @@ public class ExamQuestsLibController {
 	
 	@RequestMapping(path="/upfile",method={RequestMethod.POST})
 	public String saveUploadFiles(@RequestParam(value="gradelevel") String grade, 
-			HttpServletRequest req, Model mdl, HttpServletResponse resp){
+			HttpServletRequest req, Model mdl, HttpServletResponse resp	,
+			@RequestParam("file1") MultipartFile[] files
+	
+			){
 		//题文档上传
 		log.info(req.getRequestURI());
 		req.setAttribute("turnpath", "/examquest/doc/"+grade);//提示页面之后跳转地址		
-		
+
+		req.setAttribute("info", "No upload file!");//提示信息		
 		try {
-			req.setAttribute("info", "No upload file!");//提示信息		
-			CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(req.getSession().getServletContext());
+			String[] difficulty = req.getParameterValues("difficulty");//作为注解RequestParam会导致提交失败
+			String[] stage = req.getParameterValues("stage");
+			String[] author = req.getParameterValues("author");
+			String[] createtime = req.getParameterValues("createtime");
+			String[] foruser = req.getParameterValues("foruser");
+			String[] remark = req.getParameterValues("remark");
+			boolean opflag = false;
+			int cnt = 0;
+			for (int i = 0; i < files.length; i++) {
+				String fname = files[i].getOriginalFilename();				
+				if(!files[i].isEmpty()){					
+					String newfilepath = "d:/ex/uploadtest1/" + UUID.randomUUID().toString() + "_" + fname;
+					OutputStream os = new FileOutputStream(newfilepath);
+					InputStream in =  files[i].getInputStream();
+					FileCopyUtils.copy(in, os);
+					os.close();
+					in.close();
+					opflag = true;
+					cnt++;
+					log.info("filename: " + fname);		
+					log.info("difficulty: "+ difficulty[i]);
+					log.info("stage: "+ stage[i]);
+					log.info("author: "+ author[i]);
+					log.info("createtime: "+ createtime[i]);
+					log.info("foruser: "+ foruser[i]);
+					log.info("remark: "+ remark[i]);
+				}				
+			}			
+			if(opflag){
+				req.setAttribute("info", cnt+" file upload successfully! \n Total: "+ files.length);//提示信息
+			}
+			//apache的api中的ServletFileUpload在spring4中无法解析request获取上传文件FileItem,
+			//spring3的MultipartHttpServletRequest的getFileMap()方法获取的条目map为空,
+			/**在此MultipartHttpServletRequest的getFile()方法可以获取MultipartFile*/
+/*			CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(req.getSession().getServletContext());
 			if(multipartResolver.isMultipart(req)){
 				MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)req;
 				Iterator<String> iter = multiRequest.getFileNames();
-				while(iter.hasNext()){
-			
+				while(iter.hasNext()){			
 					MultipartFile file = multiRequest.getFile(iter.next());
 					if(file != null){
 						String myFileName = file.getOriginalFilename();
@@ -131,8 +172,10 @@ public class ExamQuestsLibController {
 							req.setAttribute("info", "Upload successfully!");//提示信息
 						}						
 					}					
-				}				
-			}
+				}	//多文件上传可行，OK			
+			}*/
+			
+					
 			
 			
 		} catch (Exception e) {

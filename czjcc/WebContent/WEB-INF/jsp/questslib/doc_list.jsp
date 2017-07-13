@@ -32,14 +32,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<tr>
 		<td style="width: 10%;font-weight: bold;text-align: center;">NUMBER</td>
 		<td style="width: 10%;font-weight: bold;text-align: center;">入库日期</td>
-		<td style="width: 10%;font-weight: bold;text-align: center;">题型</td>
+		
 		<td style="width: 10%;font-weight: bold;text-align: center;">难度</td>
 		<td style="width: 10%;font-weight: bold;text-align: center;">适用阶段</td>
 		<td style="width: 10%;font-weight: bold;text-align: center;">作者</td>
 		<td style="width: 10%;font-weight: bold;text-align: center;">编写日期</td>
 		<td style="width: 10%;font-weight: bold;text-align: center;">适用对象</td>
-		<td style="width: 10%;font-weight: bold;text-align: center;">有效性</td>
-		<td style="width: 10%;font-weight: bold;text-align: center;">备注</td>
+
+		<td style="width: 20%;font-weight: bold;text-align: center;">备注</td>
 	</tr>
 	</thead>
 

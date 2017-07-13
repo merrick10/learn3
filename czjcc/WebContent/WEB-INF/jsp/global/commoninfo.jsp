@@ -14,12 +14,12 @@ String redirectionpath = basePath+ request.getAttribute("turnpath");
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<meta http-equiv="refresh" content="4; url=<%=redirectionpath%>">
+<meta http-equiv="refresh" content="10; url=<%=redirectionpath%>">
 <title>INFO</title>
 <link type="text/css" rel="stylesheet" href="css/global.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap3/bootstrap.css"> 
 <script type="text/javascript">
-	var n = 4;
+	var n = 10;
 	setInterval(function(){//倒计时，提示消息
 		n--;
 		document.getElementById('sec').innerHTML= '<h2>Redirect in <span style="color: red;">'+ n +'</span> second(s)...</h2>';
