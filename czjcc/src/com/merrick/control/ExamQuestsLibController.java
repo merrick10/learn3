@@ -1,7 +1,10 @@
 package com.merrick.control;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Iterator;
@@ -9,6 +12,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -56,7 +60,7 @@ public class ExamQuestsLibController {
 	
 	@RequestMapping(path="/doc/{gradelabel}",method={RequestMethod.POST,RequestMethod.GET})
 	public String DocFileQuestList(@PathVariable(value="gradelabel") String grade, HttpServletRequest req, Model mdl){
-		
+		/**文档列表*/
 		log.info(req.getRequestURI());
 		RequestContext rc = new RequestContext(req);
 		if("j".equals(grade)){
@@ -75,7 +79,7 @@ public class ExamQuestsLibController {
 	
 	@RequestMapping(path="/edunote/{gradelabel}")
 	public String EducationNotesList(@PathVariable(value="gradelabel") String grade, HttpServletRequest req, Model mdl){
-		
+		/**笔记*/
 		log.info(req.getRequestURI());
 		RequestContext rc = new RequestContext(req);
 		if("j".equals(grade)){
@@ -94,7 +98,7 @@ public class ExamQuestsLibController {
 	
 	@RequestMapping(path="/newupload/{gradelabel}")
 	public String newDocUpload(@PathVariable(value="gradelabel") String grade, HttpServletRequest req, Model mdl){	
-		
+		/**上传编辑*/
 		RequestContext rc = new RequestContext(req);
 		if("j".equals(grade)){
 			mdl.addAttribute("gradeinfo", rc.getMessage("grade.junior"));
@@ -116,7 +120,7 @@ public class ExamQuestsLibController {
 			@RequestParam("file1") MultipartFile[] files
 	
 			){
-		//题文档上传
+		/**题文档上传*/
 		log.info(req.getRequestURI());
 		req.setAttribute("turnpath", "/examquest/doc/"+grade);//提示页面之后跳转地址		
 
@@ -184,8 +188,65 @@ public class ExamQuestsLibController {
 		}
 		
 		//return "redirect:/examquest/doc/"+grade;
-		return "global/commoninfo.page2";
+		return "global/commoninfo.page2";		
+	}
+	
+	@RequestMapping(path="/onlineview/{docname:^(?!_)(?!.*?_$)[a-zA-Z0-9\\._\u4e00-\u9fa5]+$}",method={RequestMethod.GET})
+	public String filedetail(@PathVariable(value="docname") String docname, @RequestParam(value="gradelevel") String grade,
+			HttpServletRequest req, Model mdl, HttpServletResponse resp){
+		/**文件在线浏览，适用于文本、图片或html文档，但office尚不适用*/
+		RequestContext rc = new RequestContext(req);
+		if("j".equals(grade)){
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.junior"));
+			mdl.addAttribute("gradelevel", grade);
+		}else if("s".equals(grade)){
+			mdl.addAttribute("gradeinfo", rc.getMessage("grade.senior"));
+			mdl.addAttribute("gradelevel", grade);
+		}else{
+			mdl.addAttribute("errinfo1",  "路径错误，所访问页面不存在!");
+			return "error/error.page2";
+		}		
 		
+		String prjfolder = req.getServletContext().getRealPath("");
+		log.info("[project folder]: " + prjfolder);
+		File tmpdir = new File(prjfolder + "/" + "tmpdoc" );
+		if( !tmpdir.exists() || (tmpdir.exists()&&tmpdir.isFile())){
+			boolean md = tmpdir.mkdir();
+			if (md) log.info("[create folder success]: "+ prjfolder + "/" + "tmpdoc");
+		}
+		String docshowname = docname;			
+		String docpath = "D:/ex/"+ docshowname;
+			
+		mdl.addAttribute("docfilename", docshowname);
+		InputStream in = null;
+		OutputStream out = null;
+		String newname = "";
+		try {
+			in = new FileInputStream(docpath);
+			newname = UUID.randomUUID().toString()+"_"+docshowname;
+			out = new FileOutputStream(prjfolder + "/" + "tmpdoc/"+newname);
+			FileCopyUtils.copy(in, out);
+			mdl.addAttribute("docfilepath", "tmpdoc/"+newname);
+		} catch ( IOException e) {
+			log.info(e.toString());
+		} finally{
+			if(out!=null){
+				try {
+					out.close();
+				} catch (IOException e) {
+					log.info(e.toString());
+				}			
+			}
+			if(in!=null){
+				try {
+					in.close();
+				} catch (IOException e) {
+					log.info(e.toString());
+				}	
+			}
+		}		
+		
+		return "questslib/doc_detail.page2";
 	}
 
 }

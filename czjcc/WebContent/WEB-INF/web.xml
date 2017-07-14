@@ -26,6 +26,7 @@
   	<url-pattern>/img/*</url-pattern>
   	<url-pattern>/html/*</url-pattern>
   	<url-pattern>/css/*</url-pattern>
+  	<url-pattern>/tmpdoc/*</url-pattern>
 <!--   	<url-pattern>/css/*</url-pattern> -->
 <!--   	<url-pattern>/css/*</url-pattern> -->
 <!--    	必需设置在springdispatcher前  -->
