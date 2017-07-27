@@ -194,6 +194,7 @@ public class ExamQuestsLibController {
 	@RequestMapping(path="/onlineview/{docname:^(?!_)(?!.*?_$)[a-zA-Z0-9\\._\u4e00-\u9fa5]+$}",method={RequestMethod.GET})
 	public String filedetail(@PathVariable(value="docname") String docname, @RequestParam(value="gradelevel") String grade,
 			HttpServletRequest req, Model mdl, HttpServletResponse resp){
+
 		/**文件在线浏览，适用于文本、图片或html文档，但office尚不适用*/
 		RequestContext rc = new RequestContext(req);
 		if("j".equals(grade)){
@@ -206,7 +207,10 @@ public class ExamQuestsLibController {
 			mdl.addAttribute("errinfo1",  "路径错误，所访问页面不存在!");
 			return "error/error.page2";
 		}		
+
+	
 		
+
 		String prjfolder = req.getServletContext().getRealPath("");
 		log.info("[project folder]: " + prjfolder);
 		File tmpdir = new File(prjfolder + "/" + "tmpdoc" );

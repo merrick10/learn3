@@ -41,6 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var fpath = '<c:out value="${docfilepath}" />'; 
 		var realpath = bpath + "" + fpath;
 		$('#fm1').attr("src",realpath);//仅适用于文本文档及html文档
+
 		
 	});
 
