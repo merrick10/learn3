@@ -40,7 +40,7 @@ public class ExamQuestsLibController {
 		
 		log.info(req.getRequestURI());
 		
-		RequestContext rc = new RequestContext(req);//
+		RequestContext rc = new RequestContext(req);//国际化资源引用对象
 			
 		if("j".equals(grade)){
 			mdl.addAttribute("gradeinfo", rc.getMessage("grade.junior"));//国际化
