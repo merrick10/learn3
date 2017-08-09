@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/mvc 
+    	http://www.springframework.org/schema/mvc/spring-mvc.xsd  
+        http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+       "> 
+	
+	
+	<!-- 	数据库HibernateSession来源 -->
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"   />
+	</bean>
+	
+	<!-- 	DAO Bean -->
+	<bean id="myuserdao" class="com.merrick.db.SiteUserServeImpl">
+		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>	
+	<bean id="mybasedao" class="com.merrick.db.BaseHibernateImpl" >
+		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>	
+	<bean id="myinfoimpl" class="com.merrick.db.TonggaoImpl" />	
+		
+	<!-- 	dbcp2数据源 -->
+	<bean id="dbcp2datasource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/jpcorps" />
+		<property name="username" value="root" />
+		<property name="password" value="okisoft" />
+		<property name="initialSize" value="5" />	
+		<property name="MaxTotal" value="100" />	
+		<property name="maxIdle" value="2" />
+		<property name="minIdle" value="1"/>
+		<property name="MaxWaitMillis" value="6000" />		
+	</bean>
+	
+	<!-- 	事务管理 ; bean的id不可修改-->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dbcp2datasource" />
+	</bean>
+	<tx:annotation-driven/>
+	
+
+      
+</beans>
