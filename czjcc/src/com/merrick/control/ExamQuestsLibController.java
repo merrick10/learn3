@@ -34,6 +34,8 @@ import com.merrick.util.SpringUtil;
 @RequestMapping("/examquest")
 public class ExamQuestsLibController {
 	private static Logger log =  Logger.getLogger(ExamQuestsLibController.class.getName());
+	public static final String UPLOADFOLDER = "d:/ex/uploadtest1/";//文档上传文件夹
+	public static final String ONLINEDOCFOLDER = "D:/ex/" ;//在线浏览文件所在文件夹
 	
 	@RequestMapping(path="/san/{gradelabel}")
 	public String SingleQuestList(@PathVariable(value="gradelabel") String grade, HttpServletRequest req, Model mdl){
@@ -137,7 +139,7 @@ public class ExamQuestsLibController {
 			for (int i = 0; i < files.length; i++) {
 				String fname = files[i].getOriginalFilename();				
 				if(!files[i].isEmpty()){					
-					String newfilepath = "d:/ex/uploadtest1/" + UUID.randomUUID().toString() + "_" + fname;
+					String newfilepath = UPLOADFOLDER + UUID.randomUUID().toString() + "_" + fname;
 					OutputStream os = new FileOutputStream(newfilepath);
 					InputStream in =  files[i].getInputStream();
 					FileCopyUtils.copy(in, os);
@@ -219,7 +221,7 @@ public class ExamQuestsLibController {
 			if (md) log.info("[create folder success]: "+ prjfolder + "/" + "tmpdoc");
 		}
 		String docshowname = docname;			
-		String docpath = "D:/ex/"+ docshowname;
+		String docpath = ONLINEDOCFOLDER + docshowname;
 			
 		mdl.addAttribute("docfilename", docshowname);
 		InputStream in = null;
