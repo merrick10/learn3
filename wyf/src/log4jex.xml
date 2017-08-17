@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+
+	
+	<appender name="LOG.F" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="encoding" value="UTF-8" />
+  		<param name="File" value="E:/log_czjcc/log.log" />
+  		<param name="Append" value="true" />
+  		<layout class="org.apache.log4j.PatternLayout">
+   			<param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss} [%C:%M:%L] [ %t:%r ] - [ %p ]  %m%n" />
+  		</layout>
+  		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+   			<param name="levelMin" value="info" />
+   			<param name="levelMax" value="error" />
+   			<param name="AcceptOnMatch" value="true" />
+  		</filter> 	
+	</appender>
+	
+	<appender name="LOG.F2" class="org.apache.log4j.RollingFileAppender">
+		<param name="encoding" value="UTF-8" />
+  		<param name="File" value="E:/log_czjcc/log.log" />
+  		<param name="Append" value="true" />
+		<param name="maxBackupIndex" value="200" />
+  		<param name="maxFileSize" value="1MB" />
+  		<layout class="org.apache.log4j.PatternLayout">
+   			<param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss} [%C:%M:%L] [ %t:%r ] - [ %p ]  %m%n" />
+  		</layout>
+  		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+   			<param name="levelMin" value="info" />
+   			<param name="levelMax" value="error" />
+   			<param name="AcceptOnMatch" value="true" />
+  		</filter> 	
+	</appender>
+
+ <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">  
+	  <layout class="org.apache.log4j.PatternLayout">  
+	   	<param name="ConversionPattern"  value="%-d{yyyy-MM-dd HH:mm:ss}  [%C:%M:%L] [ %t:%r ] - [ %p ]  %m%n" />  
+	  </layout>      
+	  <!--限制输出级别 -->  
+	  <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+	   <param name="LevelMax" value="ERROR"/>  
+	   <param name="LevelMin" value="INFO"/>  
+	  </filter>  
+ </appender> 
+  
+	<root>
+<!-- 	  <appender-ref ref="LOG.F" />	   -->
+<!-- 	  暂不使用LOG.F   -->
+	  <appender-ref ref="LOG.F2" />	 
+	  <appender-ref ref="CONSOLE" />
+	</root>
+</log4j:configuration>
